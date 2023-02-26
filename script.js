@@ -1,13 +1,30 @@
 var video = document.getElementById("video");
-var playButton = document.getElementById("play");
-var pauseButton = document.getElementById("pause");
+var playPauseBtn = document.getElementById("playPauseBtn");
+var timer = document.getElementById("currentTime");
 
-playButton.addEventListener('click', () => {
-    video.play();
-    console.log("play");
+//Play and pause events
+playPauseBtn.addEventListener('click', () => {
+    if(!video.paused){
+        video.pause();
+        console.log("pause");
+    }else{
+        video.play();
+        console.log("play");
+    }
 })
 
-pauseButton.addEventListener('click', () => {
-    video.pause();
-    console.log("pause");
-})
+//Add the current time
+function videoTimer(){
+    var time = video.duration;
+    console.log("Duration value: " + time);
+    vidMinutes = Math.floor(time / 60);
+    vidSeconds = Math.floor(time % 60);
+
+    if(vidSeconds < 10){
+        vidSeconds = "0" + vidSeconds;
+    }
+
+    console.log(vidMinutes + ":" + vidSeconds);
+    timer.innerHTML = vidMinutes + ":" + vidSeconds;
+}
+videoTimer();
