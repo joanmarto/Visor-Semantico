@@ -1,6 +1,7 @@
 var video = document.getElementById("video");
 var playPauseBtn = document.getElementById("playPauseBtn");
 var timer = document.getElementById("currentTime");
+var seekbar = document.getElementById("seekBar");
 
 //Play and pause events
 playPauseBtn.addEventListener('click', () => {
@@ -28,3 +29,11 @@ function videoTimer(){
     timer.innerHTML = vidMinutes + ":" + vidSeconds;
 }
 videoTimer();
+
+//Progress bar
+const progressUnit = 100/video.duration;
+video.addEventListener('timeupdate', () => {
+    let value = Number(seekbar.getAttribute("value"));
+    console.log("Value on seekbar = " + value);
+    seekbar.setAttribute("value", value + progressUnit);
+})

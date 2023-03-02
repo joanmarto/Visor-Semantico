@@ -26,6 +26,9 @@
             <div id="myCtrlVid">
                 <!-- Play & Pause Button -->
                 <button id="playPauseBtn">Play/pause</button>
+                <!-- Video timer -->
+                <label id=videoTime>00:00</label>
+                <label>/</label>
                 <!-- Current Time -->
                 <label id="currentTime"></label>
                 <!-- Seekbar -->
@@ -34,8 +37,7 @@
                     <progress value="0" max="100" step="1" id=progressBar class="progressBar"></progress>
                     <progress value="0" max="100" step="1" id=bufferBar class="bufferBar"></progress>
                 </div>
-                <!-- Video timer -->
-                <label id=videoTime>00:00</label>
+                
                 <!-- Volume -->
                 <button id=volumeBtn></button>
                 <input type="range" id=seekVol min="0" max="100" step="1" class="volumeSeekBar">
