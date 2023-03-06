@@ -1,3 +1,22 @@
+.navbar-bg {
+    background-color: #3e4144;
+}
+
+.navbar-color-txt {
+    color: white !important;
+}
+
+a {
+    color: white;
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
 .video {
     width: 50%;
     height: 420px;

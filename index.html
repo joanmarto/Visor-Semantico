@@ -5,21 +5,44 @@
     <title>Custom Video Controls</title>
     <meta charset="utf-8" />
 
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
     <!--CSS-->
-    <link type="text/css" href="style.css" rel="stylesheet">
+    <link type="text/css" href="css/style.css" rel="stylesheet">
 
     <!--JavaScript-->
-    <script src="script.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
+    <div class="navbar-color-txt">
+        <nav class="navbar navbar-light justify-content-between navbar-bg">
+            <a class="navbar-brand navbar-color-txt" href="#">Visor Semántico</a>
+            <div class="form-inline">
+                <a class="navbar-brand navbar-color-txt" href="https://www.uib.es/es/">UIB</a>
+                <a class="navbar-brand navbar-color-txt"
+                    href="https://github.com/joanmarto/Visor-Semantico">GitHub</a>
+            </div>
+        </nav>
+    </div>
     <div>
         <!-- Video div -->
         <div>
             <p>Video</p>
             <video class="video" id="video">
                 <!--Source-->
-                <source src="Video-leones.mp4" type="video/mp4">
+                <source src="media/Video-leones.mp4" type="video/mp4">
                 <!--Default-->
                 Your browser can't show this media
             </video>
@@ -27,17 +50,17 @@
                 <!-- Play & Pause Button -->
                 <button id="playPauseBtn">Play/pause</button>
                 <!-- Video timer -->
-                <label id=videoTime>00:00</label>
+                <label id="currentTime">00:00</label>
                 <label>/</label>
                 <!-- Current Time -->
-                <label id="currentTime"></label>
+                <label id="duration"></label>
                 <!-- Seekbar -->
                 <div class="video-seekbar">
                     <input type="range" id=seekBar value="0" min="0" max="100" step="0.1">
                     <progress value="0" max="100" step="1" id=progressBar class="progressBar"></progress>
                     <progress value="0" max="100" step="1" id=bufferBar class="bufferBar"></progress>
                 </div>
-                
+
                 <!-- Volume -->
                 <button id=volumeBtn></button>
                 <input type="range" id=seekVol min="0" max="100" step="1" class="volumeSeekBar">
