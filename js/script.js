@@ -1,24 +1,33 @@
+//Variables for video player elements
 var video = document.getElementById("video");
 var playPauseBtn = document.getElementById("playPauseBtn");
 var duration = document.getElementById("duration");
 var seekbar = document.getElementById("seekBar");
 var timer = document.getElementById("currentTime")
 
+//Init
+function init(){
+    //Video duration
+    var time = video.duration;
+    videoTimer(time);
+
+    //Progress unit for seekbar
+    seekbar.setAttribute('max', time);
+}
+
 //Play and pause events
 playPauseBtn.addEventListener('click', () => {
     if(!video.paused){
         video.pause();
-        console.log("pause");
+        //console.log("pause");
     }else{
         video.play();
-        console.log("play");
+        //console.log("play");
     }
 })
 
 //Add the duration
-function videoTimer(){
-    var time = video.duration;
-    console.log("Duration value: " + time);
+function videoTimer(time){
     let vidMinutes = Math.floor(time / 60);
     let vidSeconds = Math.floor(time % 60);
 
@@ -26,16 +35,16 @@ function videoTimer(){
         vidSeconds = "0" + vidSeconds;
     }
 
-    console.log(vidMinutes + ":" + vidSeconds);
     duration.innerHTML = vidMinutes + ":" + vidSeconds;
 }
 
-//Progress bar
-const progressUnit = 100/video.duration;
+//Initialization
+video.addEventListener('play',init);
+
+//Seekbar
 video.addEventListener('timeupdate', () => {
-    let value = Number(seekbar.getAttribute("value"));
-    console.log("Value on seekbar = " + value);
-    seekbar.setAttribute("value", value + progressUnit);
+    //Update seekbar
+    seekbar.setAttribute("value", video.currentTime);
 
     //Add the current time
     let currentTime = video.currentTime;
@@ -46,6 +55,5 @@ video.addEventListener('timeupdate', () => {
         vidSeconds = "0" + vidSeconds;
     }
     
-    console.log("CurrentTime = " + vidMinutes + ":" + vidSeconds);
     timer.innerHTML = vidMinutes + ":" + vidSeconds;
 })
