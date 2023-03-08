@@ -49,5 +49,5 @@ a {
     height: 25px;
     border-radius: 50%;
     background: #121212;
-    cursor: pointer;
+    cursor: move;
 }

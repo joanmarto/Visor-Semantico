@@ -16,7 +16,7 @@ function init(){
 }
 
 //Play and pause events
-playPauseBtn.addEventListener('click', () => {
+function playpause() {
     if(!video.paused){
         video.pause();
         //console.log("pause");
@@ -24,7 +24,11 @@ playPauseBtn.addEventListener('click', () => {
         video.play();
         //console.log("play");
     }
-})
+}
+
+playPauseBtn.addEventListener('click', playpause);
+video.addEventListener('click', playpause);
+
 
 //Add the duration
 function videoTimer(time){
@@ -43,11 +47,11 @@ video.addEventListener('play',init);
 
 //Seekbar
 video.addEventListener('timeupdate', () => {
+    let currentTime = video.currentTime;
     //Update seekbar
-    seekbar.setAttribute("value", video.currentTime);
+    seekbar.setAttribute("value", currentTime);
 
     //Add the current time
-    let currentTime = video.currentTime;
     let vidMinutes = Math.floor(currentTime / 60);
     let vidSeconds = Math.floor(currentTime % 60);
 
@@ -57,3 +61,17 @@ video.addEventListener('timeupdate', () => {
     
     timer.innerHTML = vidMinutes + ":" + vidSeconds;
 })
+
+seekbar.addEventListener('click', getInput, false);
+function getInput(e){
+    var barwidth = seekbar.clientWidth;
+    console.log(barwidth);
+    // find click position
+    var x = e.pageX - this.offsetLeft;
+    // translate to video position
+    var pct = x / barwidth;
+    // now position playback
+    var newPos = Math.round(video.duration * pct);
+    console.log(newPos);
+    video.currentTime = newPos;
+}
