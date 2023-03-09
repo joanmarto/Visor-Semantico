@@ -3,7 +3,8 @@ var video = document.getElementById("video");
 var playPauseBtn = document.getElementById("playPauseBtn");
 var duration = document.getElementById("duration");
 var seekbar = document.getElementById("seekBar");
-var timer = document.getElementById("currentTime")
+var timer = document.getElementById("currentTime");
+var vol = document.getElementById("seekVol");
 
 //Init
 function init(){
@@ -74,4 +75,10 @@ function getInput(e){
     var newPos = Math.round(video.duration * pct);
     console.log(newPos);
     video.currentTime = newPos;
+}
+
+//Volume
+vol.addEventListener('input', getVolume, false);
+function getVolume(e){
+    video.volume = vol.value;
 }
