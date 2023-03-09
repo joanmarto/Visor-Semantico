@@ -5,6 +5,7 @@ var duration = document.getElementById("duration");
 var seekbar = document.getElementById("seekBar");
 var timer = document.getElementById("currentTime");
 var vol = document.getElementById("seekVol");
+var volumeSeekBar = document.getElementById("volumeSeekBar");
 
 //Init
 function init(){
@@ -21,9 +22,11 @@ function playpause() {
     if(!video.paused){
         video.pause();
         //console.log("pause");
+        playPauseBtn.innerHTML = "Play";
     }else{
         video.play();
         //console.log("play");
+        playPauseBtn.innerHTML = "Pause";
     }
 }
 
@@ -82,3 +85,13 @@ vol.addEventListener('input', getVolume, false);
 function getVolume(e){
     video.volume = vol.value;
 }
+
+//Show seekbar volume when mouseover
+volumeSeekBar.addEventListener('mouseover', () => {
+    vol.style.visibility = "visible";
+})
+
+//Hide seekbar volume when mouseout
+volumeSeekBar.addEventListener('mouseout', () => {
+    vol.style.visibility = "hidden";
+})

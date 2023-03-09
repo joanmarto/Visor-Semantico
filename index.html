@@ -40,7 +40,7 @@
         <!-- Video div -->
         <div>
             <p>Video</p>
-            <video class="video" id="video" autoplay>
+            <video class="video" id="video">
                 <!--Source-->
                 <source src="media/Video-leones.mp4" type="video/mp4">
                 <!--Default-->
@@ -48,7 +48,7 @@
             </video>
             <div id="myCtrlVid">
                 <!-- Play & Pause Button -->
-                <button id="playPauseBtn">Play/pause</button>
+                <button id="playPauseBtn">Play</button>
                 <!-- Video timer -->
                 <label id="currentTime">00:00</label>
                 <label>/</label>
@@ -60,8 +60,11 @@
                 </div>
 
                 <!-- Volume -->
-                <button id="volumeBtn"></button>
-                <input type="range" id="seekVol" min="0" value="1" max="1" step="0.1" class="volumeSeekBar">
+                
+                <div id="volumeSeekBar">
+                    <button id="volumeBtn">Volumen</button>
+                    <input type="range" id="seekVol" min="0" value="1" max="1" step="0.1" >
+                </div>
                 <button id=fsBtn class="fa fa-expand fa-lg"></button>
             </div>
         </div>
