@@ -1,0 +1,25 @@
+WEBVTT FILE
+STYLE
+::cue {
+background-image: linear-gradient(to bottom,
+dimgray, lightgray);
+ color: black;
+}
+/* Style blocks cannot use blank lines nor "dash dash
+greater than" */
+NOTE comment blocks can be used between style blocks.
+
+STYLE
+::cue(b) {
+ color: black;
+}
+00:00:00.000 --> 00:00:03.000
+Esta miniatura de tan solo 11 jugadas que te muestro hoy
+
+00:00:03.000 --> 00:00:06.000
+está considerado como uno de los ataques directos contra el enrroque
+
+00:00:06.000 --> 00:00:09.000
+más devastadores de la historia.
+
+NOTE style blocks cannot appear after the first cue.

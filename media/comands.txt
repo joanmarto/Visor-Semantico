@@ -1,0 +1,5 @@
+** RECORTAR VIDEO 7 **
+ffmpeg -i Video7malo.mp4 -map 0 -default_mode infer_no_subs -t 00:00:55.50 -c copy Video7.mp4 -noaccurate_seek
+
+** JUNTAR VIDEOS **
+ffmpeg -f concat -i lista.txt -c copy chess_video.mp4
