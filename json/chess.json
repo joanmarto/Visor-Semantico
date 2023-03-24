@@ -1,0 +1,14 @@
+{
+    "@type": "Chess",
+    "Chess":[
+        {
+            "id": 1,
+            "whitePlayer": "Tomeu",
+            "blackPlayer": "Toni",
+            "year": 2014,
+            "location": "UIB",
+            "opening": "Apertura Catalana",
+            "defense": "Defensa popoff"
+        }
+    ]
+}
