@@ -17,15 +17,16 @@ a {
     white-space: nowrap;
 }
 
-
 .video {
+    background-color: black;
     width: 100%;
     height: 420px;
+    grid-row: 1 / 2;
 }
 
 #seekBar {
     -webkit-appearance: none;
-    width: 50%;
+    width: 100%;
     height: 10px;
     border-radius: 5px;
     background: #d3d3d3;
@@ -53,6 +54,42 @@ a {
     cursor: move;
 }
 
-#seekVol{
-    visibility: hidden;
+#video-seekbar{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#seekVol-container{
+    /*visibility: hidden;*/
+    width: 150px;
+    grid-column: 2/3;
+}
+
+#volumeBtn{
+    display: grid;
+}
+
+#myCtrlVid{
+    background-color: cornflowerblue;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 5% 17% 65% 5% 3%;
+    grid-gap: 5px;
+}
+
+.video-container{
+    margin: 5px;
+    display: grid;
+    grid-template-rows: 80% 7%;
+}
+
+.main-grid-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100% 100%;
+}
+
+.quiz-container{
+    grid-column: 2/3; 
+    grid-row: 2/3;
 }
