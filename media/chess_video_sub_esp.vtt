@@ -1,25 +1,193 @@
 WEBVTT FILE
-STYLE
-::cue {
-background-image: linear-gradient(to bottom,
-dimgray, lightgray);
- color: black;
-}
-/* Style blocks cannot use blank lines nor "dash dash
-greater than" */
-NOTE comment blocks can be used between style blocks.
 
-STYLE
-::cue(b) {
- color: black;
-}
 00:00:00.000 --> 00:00:03.000
 Esta miniatura de tan solo 11 jugadas que te muestro hoy
 
-00:00:03.000 --> 00:00:06.000
-está considerado como uno de los ataques directos contra el enrroque
+00:00:03.000 --> 00:00:06.000 
+está considerado como uno de los ataques directos contra el enroque 
 
 00:00:06.000 --> 00:00:09.000
 más devastadores de la historia.
 
-NOTE style blocks cannot appear after the first cue.
+00:00:09.000 --> 00:00:10.000
+Fue en una defensa francesa
+
+00:00:10.000 --> 00:00:14.000
+entre Blom Jensen en el año 34 donde las negras
+
+00:00:14.000 --> 00:00:17.000
+juegan alfil d6 y el blanco ya quiere también apuntar
+
+00:00:17.000 --> 00:00:20.000 
+hacia el flanco de rey, completar el desarrollo
+
+00:00:20.000 --> 00:00:23.000
+y simplemente en esta posición donde parece que no hay nada
+
+00:00:23.000 --> 00:00:26.000
+el negro acaba de enrocar y ¿ya podemos forzar el mate?
+
+00:00:26.000 --> 00:00:30.000
+pues prácticamente con caballo f6 jaque.
+
+00:00:30.000 --> 00:00:33.000
+Después de peón por, el alfil viene a retomar
+
+00:00:33.000 --> 00:00:36.000
+y se amenazan cosas como dama g4 jaque
+
+00:00:36.000 --> 00:00:39.000
+y si te cubres de caballo, como mínimo pierdes la dama
+
+00:00:39.000 --> 00:00:43.000
+aunque también tengo ideas de venir a h5, h6 y dar mate a g7.
+
+00:00:43.000 --> 00:00:46.000
+¿Qué juegan las negras? Dama d7 para desclavar el caballo
+
+00:00:46.000 --> 00:00:51.000
+y poder venir hasta la casilla g6. Pero viene alfil por h7,
+
+00:00:51.000 --> 00:00:54.000
+no hay nada más directo que esto. Rey por h7, jaque,
+
+00:00:54.000 --> 00:00:59.000
+rey g8 y jaque mate. Sígueme para más partidas increibles.
+
+00:00:59.000 --> 00:01:02.000
+Partidas que demuestran que Bobby Fischer, sencillamente, 
+
+00:01:02.000 --> 00:01:06.000
+era de otro planeta. Contra Paul Benko jugó esta partida
+
+00:01:06.000 --> 00:01:10.000
+eligiendo la variante más agresiva contra la defensa Pirc
+
+00:01:10.000 --> 00:01:13.000
+que plantea su rival. Defiende el centro, cambia, juega f5 
+
+00:01:13.000 --> 00:01:15.500
+para atacar el enroque enemigo, retira la dama atacada
+
+00:01:15.500 --> 00:01:19.000
+y acaba enrocando corto. Atención a este paso de la dama
+
+00:01:19.000 --> 00:01:23.000
+maniobrando hasta h5 para facilitar el ataque. El negro
+
+00:01:23.000 --> 00:01:27.000
+va a buscar el cambio de damas a base de un f5, así que
+
+00:01:27.000 --> 00:01:30.000
+aquí viene la sorpresa. Alfil por d4, peón por. A Fischer
+
+00:01:30.000 --> 00:01:33.000
+le gustaría e5 para que el alfil apoyara un mate de la dama
+
+00:01:33.000 --> 00:01:37.500
+pero vendría f5 precisamente, así que TORRE F6. Sacrifica
+
+00:01:37.500 --> 00:01:40.500
+la torre que no podría ser capturada, porque después de
+
+00:01:40.500 --> 00:01:44.000
+alfil por y e5 el mate sería inevitable. Así que el negro
+
+00:01:44.000 --> 00:01:47.000
+jugó rey g8 y después de e5, h6 y caballo e2, abandonó
+
+00:01:47.000 --> 00:01:50.000
+porque el caballo está atacado. En caso de que se mueva
+
+00:01:50.000 --> 00:01:53.000
+dama f5 y dama h7, jaque mate.
+
+00:01:53.000 --> 00:01:56.000
+Nimzowitsch pasó a la historia por su libro "Mi sistema"
+
+00:01:56.000 --> 00:01:59.000
+pero también por esta partida con la apertura española
+
+00:01:59.000 --> 00:02:02.000
+dando mate en 12 jugadas con un jaque doble. Mira, Mira
+
+00:02:02.000 --> 00:02:06.000
+lo que te espera. Aquí enrocó, permitiendo d6, rompiendo
+
+00:02:06.000 --> 00:02:10.000
+en el centro. El negro captura ese peón pero d5. El caballo
+
+00:02:10.000 --> 00:02:13.000
+está de c6 está clavado, parece que se gana pero el negro
+
+00:02:13.000 --> 00:02:16.000
+ataca el alfil que está clavando. Se retira atacando el otro
+
+00:02:16.000 --> 00:02:19.000
+caballo. Ahora los dos caballos están atacados, pero el negro
+
+00:02:19.000 --> 00:02:22.000
+retira uno y cuando cae un caballo avanza su peón, Ahora 
+
+00:02:22.000 --> 00:02:25.000
+está atacando 2 piezas al mismo tiempo, pero la torre
+
+00:02:25.000 --> 00:02:28.000
+clava ese peón. El negro lo defiende, el alfil se retira
+
+00:02:28.000 --> 00:02:31.000
+y parece que permite que el caballo sea capturado, pero 
+
+00:02:31.000 --> 00:02:34.000
+¿qué ocurre cuando el caballo es capturado? Viene esa
+
+00:02:34.000 --> 00:02:37.000
+captura de peón, la torre está atacada el alfil de las
+
+00:02:37.000 --> 00:02:42.000
+negras también y después de alfil por b7 llega la magia.
+
+00:02:42.000 --> 00:02:48.000
+Alfil b5, jaque doble con la torre y con el alfil. Jaque mate.
+
+00:02:48.000 --> 00:02:51.000
+Atrás han quedado esos tiempos donde se pensaba que la manera
+
+00:02:51.000 --> 00:02:55.000
+más rápida en que podía concluir una partida de ajedrez era
+
+00:02:55.000 --> 00:03:00.000
+con el mate del loco. Después de f3, e5, g4, dama h4, jaque mate.
+
+00:03:00.000 --> 00:03:03.000
+Pues bien, Magnus Carlsen, actual campeón del mundo, ya demostró
+
+00:03:03.000 --> 00:03:07.000
+que no, que después de d4, caballo f6, c4 puede acabar la partida
+
+00:03:07.000 -->00:03:10.000
+puesto que él abandonó frente a Niemann en esta posición
+
+00:03:10.000 --> 00:03:14.000
+en señal de protesta porque piensa que su rival hace trampas.
+
+00:03:14.000 --> 00:03:18.000
+Pero recibió hace poco de su propia medicina en el Titled Tuesday 
+
+00:03:18.000 --> 00:03:23.000
+del martes pasado. Mamedov le jugó e4, él jugó g5 y Mamedov
+
+00:03:23.000 --> 00:03:27.000
+abandonó porque le parece de mal gusto esa apertura de broma.
+
+00:03:27.000 --> 00:03:32.000
+De todas maneras, la partida más corta que yo recuerdo fue d4.
+
+00:03:32.000 --> 00:03:37.000
+Y aquí firmaron tablas Karpov y Leko en Groningen en el año 95
+
+00:03:37.000 --> 00:03:40.000
+en señal de protesta porque el torneo, la última ronda del
+
+00:03:40.000 --> 00:03:46.000
+torneo empezaba muy temprano, a las 9
