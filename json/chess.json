@@ -3,12 +3,88 @@
     "Chess":[
         {
             "id": 1,
-            "whitePlayer": "Tomeu",
-            "blackPlayer": "Toni",
-            "year": 2014,
-            "location": "UIB",
-            "opening": "Apertura Catalana",
-            "defense": "Defensa popoff"
+            "whitePlayer": "Karl Blom",
+            "blackPlayer": "Niels Jensen",
+            "year": "1934",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 55.402602, 
+                "longitude": 10.390641
+            },
+            "opening": "",
+            "defense": "Defensa francesa"
+        },{
+            "id": 2,
+            "whitePlayer": "Bobby Fischer",
+            "blackPlayer": "Paul Benko",
+            "year": "1963",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 40.713892,  
+                "longitude": -74.005484
+            },
+            "opening": "",
+            "defense": "Defensa Pirc"
+        },{
+            "id": 3,
+            "whitePlayer": "Aron Nimzowitsch",
+            "blackPlayer": "",
+            "year": "",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 0.0, 
+                "longitude": 0.0
+            },
+            "opening": "Apertura Española",
+            "defense": ""
+        },{
+            "id": 4,
+            "whitePlayer": "Anatoli Karpov",
+            "blackPlayer": "Peter Leko",
+            "year": "1995",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 53.218907, 
+                "longitude": 6.562830
+            },
+            "opening": "",
+            "defense": ""
+        },{
+            "id": 5,
+            "whitePlayer": "William H.K. Pollock",
+            "blackPlayer": "S. Langleben ",
+            "year": "1893",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 42.886204, 
+                "longitude": -78.877096 
+            },
+            "opening": "Gambito Escoces",
+            "defense": ""
+        },{
+            "id": 6,
+            "whitePlayer": "Alexander Alekhine",
+            "blackPlayer": "Aficionado desconocido",
+            "year": "1936",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 0.0, 
+                "longitude": 0.0
+            },
+            "opening": "Apertura de Peón de Rey",
+            "defense": ""
+        },{
+            "id": 7,
+            "whitePlayer": "Sanders",
+            "blackPlayer": "Aficionado desconocido",
+            "year": "1910",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 40.677810, 
+                "longitude": -73.938517
+            },
+            "opening": "Gambito de Rey",
+            "defense": ""
         }
     ]
 }
