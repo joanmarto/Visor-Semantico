@@ -16,7 +16,7 @@
         },{
             "id": 2,
             "whitePlayer": "Bobby Fischer",
-            "blackPlayer": "Paul Benko",
+            "blackPlayer": "Pal Benko",
             "year": "1963",
             "geo": {
                 "@type": "GeoCoordinates",

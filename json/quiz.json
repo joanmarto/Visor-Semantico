@@ -1,0 +1,41 @@
+{
+    "@type" : "Quiz",
+    "Quiz": [
+        {
+            "id" : 1,
+            "question" : "¿Qué defensa jugó Jensen contra Blom?",
+            "answers" : ["Defensa italiana", "Defensa francesa", "Defensa española"],
+            "correctAnswer": "Defensa francesa"
+        },{
+            "id" : 2,
+            "question" : "¿Contra quién jugó Bobby Fischer?",
+            "answers" : ["Pal Benko", "Un aficionado", "Donald Trump"],
+            "correctAnswer": "Pal Benko"
+        },{
+            "id" : 3,
+            "question" : "¿Qué libro escribió Nimzowitsch?",
+            "answers" : ["Principios de JavaScript", "Cómo hacer gazpacho", "Mi sistema"],
+            "correctAnswer": "Mi sistema"
+        },{
+            "id" : 4,
+            "question" : "¿Por qué abandonó Carlsen contra Niemann?",
+            "answers" : ["Tenía que ir al baño", "Creía que su rival hacía trampas", "Se olvidó del cumpleaños de su mujer"],
+            "correctAnswer": "Creía que su rival hacía trampas"
+        },{
+            "id" : 5,
+            "question" : "¿Qué es importante en ajedrez?",
+            "answers" : ["Enrocar", "Sacrificar un caballo", "Saludar a tu oponente antes de empezar"],
+            "correctAnswer": "Enrocar"
+        },{
+            "id" : 6,
+            "question" : "¿En qué año jugó Alexander Alekhine?",
+            "answers" : ["37", "35", "36"],
+            "correctAnswer": "36"
+        },{
+            "id" : 7,
+            "question" : "¿Qué contragambito le jugaron a Sanders?",
+            "answers" : ["Contragambito Falkbeer", "Contragambito Farenheit", "Contragambito Fuenlabrada"],
+            "correctAnswer": "Contragambito Falkbeer"
+        }
+    ]
+}
