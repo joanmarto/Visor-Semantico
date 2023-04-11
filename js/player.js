@@ -106,11 +106,10 @@ volumeBtn.addEventListener('mouseout', () => {
 //var video = document.getElementById("myVideo");
 var chaptersTrack = video.textTracks[1];
 chaptersTrack.mode = "hidden"; // Oculta el track por defecto
-chaptersTrack.addEventListener("cuechange",
-    function () {
-        var cue = this.activeCues[0];
-        if (cue) {
-            console.log("Capítulo:", cue.text);
+chaptersTrack.addEventListener("cuechange", function () {
+    var cue = this.activeCues[0];
+    if (cue) {
+        console.log("Capítulo:", cue.text);
         }
     });
 video.addEventListener("loadedmetadata", function () {
