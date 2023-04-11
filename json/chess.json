@@ -28,7 +28,7 @@
         },{
             "id": 3,
             "whitePlayer": "Aron Nimzowitsch",
-            "blackPlayer": "",
+            "blackPlayer": "Aficionado desconocido",
             "year": "",
             "geo": {
                 "@type": "GeoCoordinates",
@@ -52,7 +52,7 @@
         },{
             "id": 5,
             "whitePlayer": "William H.K. Pollock",
-            "blackPlayer": "S. Langleben ",
+            "blackPlayer": "S. Langleben",
             "year": "1893",
             "geo": {
                 "@type": "GeoCoordinates",
