@@ -6,6 +6,9 @@ var duration = document.getElementById("duration");
 var seekbar = document.getElementById("seekBar");
 var timer = document.getElementById("currentTime");
 var volumeBtn = document.getElementById("volumeBtn");
+var videoOptions = document.getElementById("video-options");
+
+var showVideoOptions = true;
 
 //Init
 function init() {
@@ -103,15 +106,14 @@ volumeBtn.addEventListener('mouseout', () => {
 })
 
 //Chapters
-//var video = document.getElementById("myVideo");
 var chaptersTrack = video.textTracks[1];
 chaptersTrack.mode = "hidden"; // Oculta el track por defecto
 chaptersTrack.addEventListener("cuechange", function () {
     var cue = this.activeCues[0];
     if (cue) {
         console.log("Capítulo:", cue.text);
-        }
-    });
+    }
+});
 video.addEventListener("loadedmetadata", function () {
     var cues = chaptersTrack.cues;
     for (var i = 0; i < cues.length; i++) {
@@ -119,3 +121,60 @@ video.addEventListener("loadedmetadata", function () {
             ":", cues[i].startTime);
     }
 });
+
+//Opciones 
+videoOptions.addEventListener('click', () => {
+    if (showVideoOptions) {
+        showVideoOptions = false;
+        var a = this.value;
+        //Div que contendrá los botones
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "-container");
+        a.setAttribute("class", "options-list")
+        myCtrlVid.parentElement.appendChild(a);
+
+        //Botones para cada una de las opciones
+        var options = ["Subtitulos", "1080p", "720p", "480p", "360p", "Vel. +0.25", "Vel. -0.25"];
+        var b = [];
+        for(let i = 0; i < options.length; i++){
+            b[i] = document.createElement("BUTTON");
+            b[i].setAttribute("value", i.toString());
+            b[i].innerHTML = options[i];
+
+            b[i].addEventListener('click', () => {
+                switch(b[i].value){
+                    case "0":
+                        console.log("Subtitulos");
+                    break;
+                    case "1":
+                        console.log("1080p");
+                    break;
+                    case "2":
+                        console.log("720p");
+                    break;
+                    case "3":
+                        console.log("480p");
+                    break;
+                    case "4":
+                        console.log("360p");
+                    break;
+                    case "5":
+                        console.log("Vel. +0.25");
+                    break;
+                    case "6":
+                        console.log("Vel. -0.25");
+                    break;
+                    default:
+                        console.log(b[i].value);
+                    break;
+                }
+            });
+            a.appendChild(b[i]);
+        }
+        
+    }else{
+        showVideoOptions = true;
+        document.getElementById(this.id + "-container").remove();
+    }
+    
+})
