@@ -20,6 +20,7 @@
 
     <!--CSS-->
     <link type="text/css" href="css/style.css" rel="stylesheet">
+    <link type="text/css" href="css/quiz.css" rel="stylesheet">
 
     <!--JavaScript-->
     <script src="js/player.js" defer></script>
@@ -112,7 +113,28 @@
             </div>
         </div>
         <div class="quiz-container">
-            <h1>Preguntas</h1>
+            <div class="title-quiz">
+                <h1>Preguntas</h1>
+            </div>
+            <div class="quiz-game-contaioner">
+                <div class="question-slot">
+                    <h3 id="quiz-question">¿Listo?</h3>
+                </div>
+                <div id="answers" class="answers-container">
+                    <button id = "answer1">Si</button>
+                    <button id = "answer2">No</button>
+                    <button id = "answer3">Puede</button>
+                </div>
+                <div class="result-container">
+                    <div class="correct-answer">
+                        <h6 id="correct-answer-value">Correct answer: </h6>
+                    </div>
+                    <div class="score">
+                        <h6 id="score-result">Score: -1</h6>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         <div style="width: 640px; height: 480px" id="mapContainer"></div>
     </div>
