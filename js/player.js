@@ -42,15 +42,17 @@ document.addEventListener('keydown', (ev) => {
             playpause();
             break;
         case 'ArrowRight':
-            console.log("->");
+            //console.log("->");
             video.currentTime += 5;
             break;
         case 'ArrowLeft':
-            console.log("<-");
+            //console.log("<-");
             video.currentTime -= 5;
             break;
+        case '0':
+            video.currentTime = 0;
         default:
-            console.log(ev.key);
+            //console.log(ev.key);
     }
 })
 
