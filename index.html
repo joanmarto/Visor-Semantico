@@ -112,6 +112,7 @@
                 </div>
             </div>
         </div>
+        <!--Quiz-->
         <div class="quiz-container">
             <div class="title-quiz">
                 <h1>Preguntas</h1>
@@ -134,9 +135,44 @@
                     </div>
                 </div>
             </div>
+            <div class="add-questions-container">
+                <div class="button-adder">
+                    <input id="add-question-button" type="submit" value="Añadir Preguntas">
+                    
+                </div>
+                <div id="form-container" style="display: none;">
+                    <form action="" name="question-adder" onsubmit="return validateForm()">
+                        <!--Pregunta-->
+                        <label for="">Pregunta</label>
+                        <input type="text" name="question">
+                        <!--Respuesta 1-->
+                        <label for="">Respuesta 1</label>
+                        <input type="text" name="answer1">
+                        <!--Respuesta 2-->
+                        <label for="">Respuesta 2</label>
+                        <input type="text" name="answer2">
+                        <!--Respuesta 3-->
+                        <label for="">Respuesta 3</label>
+                        <input type="text" name="answer3">
+                        <!--Respuesta correcta-->
+                        <label for="">Respuesta correcta</label>
+                        <input type="text" name="correct-answer">
+                        <!--Minuto-->
+                        <label for="">Minuto</label>
+                        <input type="number" min="0" name="min">
+                        <!--Segundos-->
+                        <label for="">Segundos</label>
+                        <input type="number" min="0" max="59" name="sec">
+                        <!--Colgar pregunta-->
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
             
         </div>
+        <!--Map API-->
         <div style="width: auto; height: auto" id="mapContainer"></div>
+        <!--Info-->
         <div class="info-container">
             <h1>Info</h1>
         </div>
