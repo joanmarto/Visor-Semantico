@@ -1,3 +1,4 @@
+//Variables
 var video = document.getElementById("video");
 var addquestion = document.getElementById("add-question-button");
 
@@ -5,7 +6,7 @@ var quiz;
 var score = [];
 var buttonAQClicked = false;
 
-const xhttp = new XMLHttpRequest();
+var xhttp = new XMLHttpRequest();
 xhttp.open('GET', '/json/quiz.json', true)
 xhttp.send();
 xhttp.onreadystatechange = function () {

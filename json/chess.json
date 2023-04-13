@@ -2,7 +2,7 @@
     "@type": "Chess",
     "Chess":[
         {
-            "id": 1,
+            "id": 0,
             "whitePlayer": "Karl Blom",
             "blackPlayer": "Niels Jensen",
             "year": "1934",
@@ -14,7 +14,7 @@
             "opening": "",
             "defense": "Defensa francesa"
         },{
-            "id": 2,
+            "id": 1,
             "whitePlayer": "Bobby Fischer",
             "blackPlayer": "Pal Benko",
             "year": "1963",
@@ -26,7 +26,7 @@
             "opening": "",
             "defense": "Defensa Pirc"
         },{
-            "id": 3,
+            "id": 2,
             "whitePlayer": "Aron Nimzowitsch",
             "blackPlayer": "Aficionado desconocido",
             "year": "",
@@ -38,7 +38,7 @@
             "opening": "Apertura Española",
             "defense": ""
         },{
-            "id": 4,
+            "id": 3,
             "whitePlayer": "Anatoli Karpov",
             "blackPlayer": "Peter Leko",
             "year": "1995",
@@ -50,7 +50,7 @@
             "opening": "",
             "defense": ""
         },{
-            "id": 5,
+            "id": 4,
             "whitePlayer": "William H.K. Pollock",
             "blackPlayer": "S. Langleben",
             "year": "1893",
@@ -62,7 +62,7 @@
             "opening": "Gambito Escoces",
             "defense": ""
         },{
-            "id": 6,
+            "id": 5,
             "whitePlayer": "Alexander Alekhine",
             "blackPlayer": "Aficionado desconocido",
             "year": "1936",
@@ -74,7 +74,7 @@
             "opening": "Apertura de Peón de Rey",
             "defense": ""
         },{
-            "id": 7,
+            "id": 6,
             "whitePlayer": "Sanders",
             "blackPlayer": "Aficionado desconocido",
             "year": "1910",
