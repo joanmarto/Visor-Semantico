@@ -35,6 +35,24 @@ function playpause() {
 
 playPauseBtn.addEventListener('click', playpause);
 video.addEventListener('click', playpause);
+document.addEventListener('keydown', (ev) => {
+    switch (ev.key) {
+        case ' ':
+            //console.log("space");
+            playpause();
+            break;
+        case 'ArrowRight':
+            console.log("->");
+            video.currentTime += 5;
+            break;
+        case 'ArrowLeft':
+            console.log("<-");
+            video.currentTime -= 5;
+            break;
+        default:
+            console.log(ev.key);
+    }
+})
 
 
 //Add the duration
@@ -136,45 +154,45 @@ videoOptions.addEventListener('click', () => {
         //Botones para cada una de las opciones
         var options = ["Subtitulos", "1080p", "720p", "480p", "360p", "Vel. +0.25", "Vel. -0.25"];
         var b = [];
-        for(let i = 0; i < options.length; i++){
+        for (let i = 0; i < options.length; i++) {
             b[i] = document.createElement("BUTTON");
             b[i].setAttribute("value", i.toString());
             b[i].innerHTML = options[i];
 
             b[i].addEventListener('click', () => {
-                switch(b[i].value){
+                switch (b[i].value) {
                     case "0":
                         console.log("Subtitulos");
-                    break;
+                        break;
                     case "1":
                         console.log("1080p");
-                    break;
+                        break;
                     case "2":
                         console.log("720p");
-                    break;
+                        break;
                     case "3":
                         console.log("480p");
-                    break;
+                        break;
                     case "4":
                         console.log("360p");
-                    break;
+                        break;
                     case "5":
                         console.log("Vel. +0.25");
-                    break;
+                        break;
                     case "6":
                         console.log("Vel. -0.25");
-                    break;
+                        break;
                     default:
                         console.log(b[i].value);
-                    break;
+                        break;
                 }
             });
             a.appendChild(b[i]);
         }
-        
-    }else{
+
+    } else {
         showVideoOptions = true;
         document.getElementById(this.id + "-container").remove();
     }
-    
+
 })
