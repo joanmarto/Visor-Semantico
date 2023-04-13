@@ -9,6 +9,7 @@ var volumeBtn = document.getElementById("volumeBtn");
 var videoOptions = document.getElementById("video-options");
 
 var showVideoOptions = true;
+var showVolumeSeekbar = true;
 
 //Init
 function init() {
@@ -52,7 +53,7 @@ document.addEventListener('keydown', (ev) => {
         case '0':
             video.currentTime = 0;
         default:
-            //console.log(ev.key);
+        //console.log(ev.key);
     }
 })
 
@@ -103,26 +104,30 @@ function getInput(e) {
     video.currentTime = newPos;
 }
 
-//Show seekbar volume when mouseover
-volumeBtn.addEventListener('mouseover', () => {
-    //volumeBtn.innerHTML= "<input type=\"range\" id=\"seekVol\" min=\"0\" value=\"1\" max=\"1\" step=\"0.1\" ></input>";
-    document.getElementById("seekVol-container").innerHTML = "<input type=\"range\" id=\"seekVol\" min=\"0\" value=\"1\" max=\"1\" step=\"0.1\" ></input>";
-    myCtrlVid.style.gridTemplateColumns = "5% 17% 40% 32% 3%";
-    //Volume control
-    var vol = document.getElementById("seekVol");
-    vol.addEventListener('input', getVolume, false);
-    function getVolume(e) {
-        video.volume = vol.value;
+//Show seekbar volume onclick
+volumeBtn.addEventListener('click', () => {
+    if (showVolumeSeekbar) {
+        showVolumeSeekbar = false;
+        //Add volume seekbar input
+        document.getElementById("seekVol-container").innerHTML = `<input type=\"range\" id=\"seekVol\" min=\"0\" value=\"${video.volume}\" max=\"1\" step=\"0.1\" ></input>`;
+        myCtrlVid.style.gridTemplateColumns = "5% 17% 40% 32% 3%";
+        //Volume control
+        var vol = document.getElementById("seekVol");
+        vol.addEventListener('input', getVolume, false);
+        function getVolume(e) {
+            video.volume = vol.value;
+        }
     }
-
-    //vol.style.visibility = "visible";
 })
 
-//Hide seekbar volume when mouseout
-volumeBtn.addEventListener('mouseout', () => {
-    //vol.style.visibility = "hidden";
-    //document.getElementById("seekVol").remove();
-    //myCtrlVid.style.gridTemplateColumns = "5% 17% 65% 5% 3%";
+//Hide seekbar volume on dobleclick 
+volumeBtn.addEventListener('dblclick', () => {
+    //VolumeSeekbar can be shown again onclick
+    showVolumeSeekbar = true;
+    var vol = document.getElementById("seekVol");
+    vol.style.visibility = "hidden";
+    vol.remove();
+    myCtrlVid.style.gridTemplateColumns = "5% 17% 65% 5% 3%";
 })
 
 //Chapters
