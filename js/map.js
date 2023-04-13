@@ -41,12 +41,13 @@ xhttp.onreadystatechange = function () {
             // Create an icon, an object holding the latitude and longitude, and a marker:
             var icon = new H.map.Icon(svgMarkup);
             var coords = { lat: Number(chess.Chess[i]["geo"]["latitude"]), lng: Number(chess.Chess[i]["geo"]["longitude"])};
-            console.log("Chapter " + i + ": " + coords)
-            var marker = new H.map.Marker(coords, { icon: icon });
+            if(coords.lat != 0 && coords.lng != 0){
+              var marker = new H.map.Marker(coords, { icon: icon });
 
-            // Add the marker to the map and center the map at the location of the marker:
-            map.addObject(marker);
-            map.setCenter(coords);
+              // Add the marker to the map and center the map at the location of the marker:
+              map.addObject(marker);
+              map.setCenter(coords);
+            }
             break;
           }
         }
@@ -63,14 +64,20 @@ var platform = new H.service.Platform({
 // Obtain the default map types from the platform object
 var maptypes = platform.createDefaultLayers();
 
+// Get the default map types from the Platform object:
+var defaultLayers = platform.createDefaultLayers();
+
 // Instantiate (and display) the map
 var map = new H.Map(
   document.getElementById('mapContainer'),
   maptypes.vector.normal.map,
   {
-    zoom: 10,
+    zoom: 3,
     center: { lng: 13.4, lat: 52.51 }
   });
+
+// Create the default UI:
+var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 function equals(str1, str2) {
   if (str1.length == str2.length) {
