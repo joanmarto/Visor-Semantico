@@ -33,13 +33,12 @@ xhttp.onreadystatechange = function () {
     chaptersTrack.addEventListener("cuechange", function () {
       var cue = this.activeCues[0];
       if (cue) {
-        //console.log("Capítulo:", cue.text);
         for (let i = 0; i < chess.Chess.length; i++) {
           let chapter = chess.Chess[i]["whitePlayer"] + " vs " + chess.Chess[i]["blackPlayer"];
           if (equals(chapter, cue.text)) {
-            //Getting coordinates
             // Create an icon, an object holding the latitude and longitude, and a marker:
             var icon = new H.map.Icon(svgMarkup);
+            //Getting coordinates
             var coords = { lat: Number(chess.Chess[i]["geo"]["latitude"]), lng: Number(chess.Chess[i]["geo"]["longitude"])};
             if(coords.lat != 0 && coords.lng != 0){
               var marker = new H.map.Marker(coords, { icon: icon });
@@ -48,6 +47,21 @@ xhttp.onreadystatechange = function () {
               map.addObject(marker);
               map.setCenter(coords);
             }
+            //Add info
+            document.getElementById("info-chapter").innerHTML = `<p><strong>Capítulo: </strong>${chapter}</p>`;
+            document.getElementById("info-white-player").innerHTML = `<p><strong>Jugador Blanco: </strong>${chess.Chess[i]["whitePlayer"]}</p>`;
+            document.getElementById("info-black-player").innerHTML = `<p><strong>Jugador Negro: </strong>${chess.Chess[i]["blackPlayer"]}</p>`;
+            if(!equals(chess.Chess[i]["year"], "")){
+              document.getElementById("info-year").innerHTML = `<p><strong>Año: </strong>${chess.Chess[i]["year"]}</p>`;
+            }else{
+              document.getElementById("info-year").innerHTML = ``;
+            }
+            if(!equals(chess.Chess[i]["opening"], "")){
+              document.getElementById("info-opening-defense").innerHTML = `<p><strong>Opening: </strong>${chess.Chess[i]["opening"]}</p>`;
+            }else{
+              document.getElementById("info-opening-defense").innerHTML = `<p><strong>Defense: </strong>${chess.Chess[i]["defense"]}</p>`;
+            }
+            
             break;
           }
         }

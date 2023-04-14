@@ -47,7 +47,7 @@
                 "latitude": 53.218907, 
                 "longitude": 6.562830
             },
-            "opening": "",
+            "opening": "Apertura de Peón de Dama",
             "defense": ""
         },{
             "id": 4,
@@ -83,7 +83,7 @@
                 "latitude": 40.677810, 
                 "longitude": -73.938517
             },
-            "opening": "Gambito de Rey",
+            "opening": "",
             "defense": "Contragambito Falkbeer"
         }
     ]
