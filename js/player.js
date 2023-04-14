@@ -162,6 +162,7 @@ videoOptions.addEventListener('click', () => {
         var options = ["Subtitulos", "1080p", "720p", "480p", "360p", "Vel. +0.25", "Vel. -0.25"];
         var b = [];
         for (let i = 0; i < options.length; i++) {
+            let mytime = 0;
             b[i] = document.createElement("BUTTON");
             b[i].setAttribute("value", i.toString());
             b[i].innerHTML = options[i];
@@ -172,22 +173,30 @@ videoOptions.addEventListener('click', () => {
                         console.log("Subtitulos");
                         break;
                     case "1":
-                        console.log("1080p");
+                        changeQuality(1080, mytime);
                         break;
                     case "2":
                         console.log("720p");
+                        changeQuality(720, mytime);
                         break;
                     case "3":
                         console.log("480p");
+                        changeQuality(480, mytime);
                         break;
                     case "4":
                         console.log("360p");
+                        changeQuality(360, mytime);
                         break;
                     case "5":
-                        console.log("Vel. +0.25");
+                        //Aumenta velocidad
+                        video.playbackRate += 0.25;
                         break;
                     case "6":
-                        console.log("Vel. -0.25");
+                        //Disminuye velocidad
+                        if(video.playbackRate > 0.25){
+                            video.playbackRate -= 0.25;
+                        }
+                        
                         break;
                     default:
                         console.log(b[i].value);
@@ -203,3 +212,28 @@ videoOptions.addEventListener('click', () => {
     }
 
 })
+
+function changeQuality(quality, mytime){
+    //Creamos los elementos
+    var vidmp4 = document.createElement("SOURCE");
+    var vidweb = document.createElement("SOURCE");
+    var vidogg = document.createElement("SOURCE");
+
+    var formats = ["mp4", "webm", "ogg"];
+    var elements = [vidmp4, vidweb, vidogg];
+    for(let i = 0; i < formats.length; i++){
+        elements[i].setAttribute("src", `media/chess_video_${quality}.${formats[i]}`);
+        elements[i].setAttribute("type", `video/${formats[i]}`);
+    }
+    //Cambiamos elementos
+    video.replaceChildren(vidmp4, vidweb, vidogg);
+    //Actualizamos
+    mytime = video.currentTime;
+    myload();
+    video.currentTime = mytime;
+}
+
+function myload(){
+    video.load();
+    playPauseBtn.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" fill=\"#000000\" height=\"20px\" width=\"20px\" version=\"1.1\" id=\"Layer_1\" viewBox=\"0 0 512.055 512.055\" xml:space=\"preserve\"><g><g><path d=\"M500.235,236.946L30.901,2.28C16.717-4.813,0.028,5.502,0.028,21.361v469.333c0,15.859,16.689,26.173,30.874,19.081    l469.333-234.667C515.958,267.247,515.958,244.808,500.235,236.946z M42.694,456.176V55.879l400.297,200.149L42.694,456.176z\"/></g></g></svg>";
+}
