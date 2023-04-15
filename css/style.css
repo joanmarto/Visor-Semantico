@@ -27,6 +27,17 @@ a {
     height: 420px;
 }
 
+.subtitles{
+    background-color: #3e4144;
+    display: none;
+    height: 25px;
+}
+
+#subtitles-text{
+    text-align: center;
+    color: #fff;
+}
+
 #seekBar {
     -webkit-appearance: none;
     width: 100%;
