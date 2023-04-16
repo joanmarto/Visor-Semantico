@@ -33,17 +33,17 @@ xhttp.onreadystatechange = function () {
                         //Se muestran las posibles respuestas
                         opcion.innerHTML = quiz.Quiz[i]["answers"][j];
                         opcion.addEventListener('click', () => {
-                            if (equals(quiz.Quiz[i]["correctAnswer"], quiz.Quiz[i]["answers"][j]) && score[i]<0) {
+                            if (equals(quiz.Quiz[i]["correctAnswer"], quiz.Quiz[i]["answers"][j]) && score[i] < 0) {
                                 //Respuesta correcta
                                 score[i] = 1;
-                                document.getElementById("score-result").innerHTML = "Score: " + getScore();   
-                            }else{
+                                document.getElementById("score-result").innerHTML = "Score: " + getScore();
+                            } else {
                                 //Respuesta incorrecta
-                                if(score[i] < 0){
+                                if (score[i] < 0) {
                                     score[i] = 0;
                                 }
                             }
-                            document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: " +  quiz.Quiz[i]["correctAnswer"];  
+                            document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: " + quiz.Quiz[i]["correctAnswer"];
                         });
                     }
                 }
@@ -54,13 +54,13 @@ xhttp.onreadystatechange = function () {
 
 addquestion.addEventListener('click', () => {
     var formcontainer = document.getElementById("form-container");
-    if(!buttonAQClicked){
+    if (!buttonAQClicked) {
         buttonAQClicked = true;
         addquestion.value = "Cerrar";
 
         //Show form
-        formcontainer.style.display = "block";
-    }else{
+        formcontainer.style.display = "inline-block";
+    } else {
         buttonAQClicked = false;
         addquestion.value = "Añadir Preguntas";
 
@@ -69,23 +69,23 @@ addquestion.addEventListener('click', () => {
     }
 });
 
-function equals(str1, str2){
-    if(str1.length == str2.length){
-        for(let i = 0; i < str1.length; i++){
-            if(str1[i] != str2[i]){
+function equals(str1, str2) {
+    if (str1.length == str2.length) {
+        for (let i = 0; i < str1.length; i++) {
+            if (str1[i] != str2[i]) {
                 return false;
             }
         }
-    }else{
+    } else {
         return false;
     }
     return true;
 }
 
-function getScore(){
+function getScore() {
     let result = 0;
-    for(let i = 0; i < score.length; i++){
-        if(score[i] == 1){
+    for (let i = 0; i < score.length; i++) {
+        if (score[i] == 1) {
             result++;
         }
     }
@@ -94,7 +94,7 @@ function getScore(){
 
 function validateForm() {
     //Comprobamos que todos los inputs son validos
-    for(let i = 0; i < document.forms["question-adder"].length; i++){
+    for (let i = 0; i < document.forms["question-adder"].length; i++) {
         let x = document.forms["question-adder"][i].value;
         if (x == "") {
             alert("El formulario no está completo");
@@ -104,14 +104,14 @@ function validateForm() {
     writeQuestion();
 }
 
-function writeQuestion(){
+function writeQuestion() {
     //console.log("Next id: " + quiz.Quiz.length);
-    var sec = Number(document.forms["question-adder"]["min"].value)*60 + Number(document.forms["question-adder"]["sec"].value);
+    var sec = Number(document.forms["question-adder"]["min"].value) * 60 + Number(document.forms["question-adder"]["sec"].value);
     //alert("New time is: " + sec);
     newQuiz = {
         id: quiz.Quiz.length,
-        question : document.forms["question-adder"]["question"].value,
-        answers : [document.forms["question-adder"]["answer1"].value, document.forms["question-adder"]["answer2"].value, document.forms["question-adder"]["answer3"].value],
+        question: document.forms["question-adder"]["question"].value,
+        answers: [document.forms["question-adder"]["answer1"].value, document.forms["question-adder"]["answer2"].value, document.forms["question-adder"]["answer3"].value],
         correctAnswer: document.forms["question-adder"]["correct-answer"].value,
         time: sec
     };
@@ -151,9 +151,9 @@ function writeQuestion(){
         method: "POST",
         body: JSON.stringify(newQuiz),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
+            "Content-type": "application/json; charset=UTF-8"
         }
-      })
+    })
         .then((response) => response.json())
         .then((json) => console.log(json));
 

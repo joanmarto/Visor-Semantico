@@ -29,14 +29,10 @@
 
     <!-- Map API-->
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
-    type="text/javascript" charset="utf-8"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
-    type="text/javascript" charset="utf-8"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
-            type="text/javascript" charset="utf-8"></script>
-        <link rel="stylesheet" type="text/css"
-            href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
 </head>
 
 <body>
@@ -52,14 +48,13 @@
     <div class="main-grid-container">
         <!-- Video div -->
         <div class="video-container">
-            <video  class="video" id="video">
+            <video class="video" id="video">
                 <!--Source-->
                 <source src="media/chess_video_1080.mp4" type="video/mp4">
                 <!--Default-->
                 Your browser can't show this media
                 <track label="Español" kind="subtitles" srclang="en" src="/media/chess_video_sub_esp.vtt">
                 <track id="chaptersTrack" kind="chapters" label="Chapters" src="/media/chapters.vtt">
-
             </video>
             <div class="subtitles">
                 <p id="subtitles-text">Subtitulos</p>
@@ -94,7 +89,6 @@
 
                 <!-- Volume -->
                 <div id="volumeBtn">
-
                     <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
                         <path
                             d="M3 14V10C3 9.44772 3.44772 9 4 9H6.64922C6.87629 9 7.0966 8.92272 7.27391 8.78087L10.3753 6.29976C11.0301 5.77595 12 6.24212 12 7.08062V16.9194C12 17.7579 11.0301 18.2241 10.3753 17.7002L7.27391 15.2191C7.0966 15.0773 6.87629 15 6.64922 15H4C3.44772 15 3 14.5523 3 14Z"
@@ -106,7 +100,6 @@
                             d="M18.8944 17.7851C20.2406 16.1807 20.9852 14.1571 20.9998 12.0628C21.0144 9.96855 20.2982 7.93473 18.9745 6.31174"
                             stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-
                     <div id="seekVol-container">
                     </div>
                 </div>
@@ -129,9 +122,9 @@
                     <h3 id="quiz-question">¿Listo?</h3>
                 </div>
                 <div id="answers" class="answers-container">
-                    <button id = "answer1">Si</button>
-                    <button id = "answer2">No</button>
-                    <button id = "answer3">Puede</button>
+                    <button id="answer1">Si</button>
+                    <button id="answer2">No</button>
+                    <button id="answer3">Puede</button>
                 </div>
                 <div class="result-container">
                     <div class="correct-answer">
@@ -145,10 +138,9 @@
             <div class="add-questions-container">
                 <div class="button-adder">
                     <input id="add-question-button" type="submit" value="Añadir Preguntas">
-                    
                 </div>
-                <div id="form-container" style="display: none;">
-                    <form action="" name="question-adder" onsubmit="return validateForm()">
+                <div id="form-container">
+                    <form class="form-quiz-adder" action="" name="question-adder" onsubmit="return validateForm()">
                         <!--Pregunta-->
                         <label for="">Pregunta</label>
                         <input type="text" name="question">
@@ -175,16 +167,15 @@
                     </form>
                 </div>
             </div>
-            
         </div>
         <!--Map API-->
         <div style="width: auto; height: auto" id="mapContainer"></div>
         <!--Info-->
         <div class="info-container">
-            <div>
-                <h1>Info</h1>
+            <div class="title-info">
+                <h1>Información</h1>
             </div>
-            <div>
+            <div class="info-data">
                 <div id="info-chapter">
                 </div>
                 <div id="info-white-player">
@@ -199,6 +190,9 @@
             </div>
         </div>
     </div>
+    <footer class="footer-bg footer-color-txt">
+        <a class="footer-link" href="https://www.chess.com/home">Chess.com</a>
+        <a class="footer-link" href="https://www.youtube.com/@maestroluison">Yotube: Maestro Luison</a>
+    </footer>
 </body>
-
 </html>

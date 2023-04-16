@@ -39,8 +39,8 @@ xhttp.onreadystatechange = function () {
             // Create an icon, an object holding the latitude and longitude, and a marker:
             var icon = new H.map.Icon(svgMarkup);
             //Getting coordinates
-            var coords = { lat: Number(chess.Chess[i]["geo"]["latitude"]), lng: Number(chess.Chess[i]["geo"]["longitude"])};
-            if(coords.lat != 0 && coords.lng != 0){
+            var coords = { lat: Number(chess.Chess[i]["geo"]["latitude"]), lng: Number(chess.Chess[i]["geo"]["longitude"]) };
+            if (coords.lat != 0 && coords.lng != 0) {
               var marker = new H.map.Marker(coords, { icon: icon });
 
               // Add the marker to the map and center the map at the location of the marker:
@@ -51,17 +51,17 @@ xhttp.onreadystatechange = function () {
             document.getElementById("info-chapter").innerHTML = `<p><strong>Capítulo: </strong>${chapter}</p>`;
             document.getElementById("info-white-player").innerHTML = `<p><strong>Jugador Blanco: </strong>${chess.Chess[i]["whitePlayer"]}</p>`;
             document.getElementById("info-black-player").innerHTML = `<p><strong>Jugador Negro: </strong>${chess.Chess[i]["blackPlayer"]}</p>`;
-            if(!equals(chess.Chess[i]["year"], "")){
+            if (!equals(chess.Chess[i]["year"], "")) {
               document.getElementById("info-year").innerHTML = `<p><strong>Año: </strong>${chess.Chess[i]["year"]}</p>`;
-            }else{
+            } else {
               document.getElementById("info-year").innerHTML = ``;
             }
-            if(!equals(chess.Chess[i]["opening"], "")){
-              document.getElementById("info-opening-defense").innerHTML = `<p><strong>Opening: </strong>${chess.Chess[i]["opening"]}</p>`;
-            }else{
-              document.getElementById("info-opening-defense").innerHTML = `<p><strong>Defense: </strong>${chess.Chess[i]["defense"]}</p>`;
+            if (!equals(chess.Chess[i]["opening"], "")) {
+              document.getElementById("info-opening-defense").innerHTML = `<p><strong>Apertura: </strong>${chess.Chess[i]["opening"]}</p>`;
+            } else {
+              document.getElementById("info-opening-defense").innerHTML = `<p><strong>Defensa: </strong>${chess.Chess[i]["defense"]}</p>`;
             }
-            
+
             break;
           }
         }
