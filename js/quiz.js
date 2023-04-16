@@ -155,8 +155,8 @@ function writeQuestion() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
+    .then(response => response.json())
+    .then(json => console.log(json));
 
     alert("wait");
     alert("window.location.href: " + window.location.href)
