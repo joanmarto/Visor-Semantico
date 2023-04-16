@@ -147,7 +147,7 @@ function writeQuestion() {
     */
 
     //window.location.href
-    let url = "https://gdie2305.ltim.uib.es/Visor-Semantico/json/quiz-prueba.json";
+    let url = "https://gdie2305.ltim.uib.es/";
     fetch(url, {
         method: "POST",
         body: JSON.stringify(newQuiz),
