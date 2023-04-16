@@ -156,7 +156,8 @@ function writeQuestion() {
         }
     })
     .then(response => response.json())
-    .then(json => console.log(json));
+    .then(json => console.log(json))
+    .catch((err) => console.log(err));
 
     alert("wait");
     alert("window.location.href: " + window.location.href)
