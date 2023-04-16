@@ -115,7 +115,7 @@ function writeQuestion() {
         correctAnswer: document.forms["question-adder"]["correct-answer"].value,
         time: sec
     };
-    
+    /*
     // Creating a XML object
     let xhr = new XMLHttpRequest();
     let url = "https://gdie2305.ltim.uib.es/";
@@ -145,7 +145,7 @@ function writeQuestion() {
     xhr.send(data);
     alert("wait");
     
-/*
+*/
     //window.location.href
     let url = "https://gdie2305.ltim.uib.es/";
     fetch(url, {
@@ -160,5 +160,5 @@ function writeQuestion() {
 
     alert("wait");
     alert("window.location.href: " + window.location.href)
-    */
+    
 }
