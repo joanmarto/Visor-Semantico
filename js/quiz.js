@@ -115,10 +115,10 @@ function writeQuestion() {
         correctAnswer: document.forms["question-adder"]["correct-answer"].value,
         time: sec
     };
-    /*
+    
     // Creating a XML object
     let xhr = new XMLHttpRequest();
-    let url = "/json/quiz-prueba.json";
+    let url = "https://gdie2305.ltim.uib.es/";
     console.log("Checkpoint line 121");
     // open a connection
     xhr.open("POST", url, true);
@@ -144,8 +144,8 @@ function writeQuestion() {
     // Sending data with the request
     xhr.send(data);
     alert("wait");
-    */
-
+    
+/*
     //window.location.href
     let url = "https://gdie2305.ltim.uib.es/";
     fetch(url, {
@@ -160,4 +160,5 @@ function writeQuestion() {
 
     alert("wait");
     alert("window.location.href: " + window.location.href)
+    */
 }
