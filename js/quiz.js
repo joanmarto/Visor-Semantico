@@ -147,7 +147,8 @@ function writeQuestion() {
     */
 
     //window.location.href
-    fetch(window.location.href, {
+    let url = "gdie2305.ltim.uib.es/json/quiz-prueba.json";
+    fetch(url, {
         method: "POST",
         body: JSON.stringify(newQuiz),
         headers: {
