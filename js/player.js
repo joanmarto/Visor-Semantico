@@ -28,10 +28,10 @@ function init() {
 }
 
 //Update video
-function update(value){
+function update(value) {
     //Video update 1080 default
     var formats = ["mp4", "webm", "ogg"];
-    for(let i = 0; i < formats.length; i++){
+    for (let i = 0; i < formats.length; i++) {
         video.children[i].setAttribute("src", `media/${value}_1080.${formats[i]}`);
     }
     //Tracks update
@@ -39,7 +39,7 @@ function update(value){
     document.getElementById("chaptersTrack").setAttribute("src", `/media/${value}_chapters.vtt`)
     videoName = value;
     myload();
-    
+
 }
 
 //Play and pause events
@@ -256,21 +256,16 @@ function changeChapter(i) {
 }
 
 function changeQuality(quality, mytime) {
-    
-    console.log(videoName);
-    //Creamos los elementos
-    var vidmp4 = document.createElement("SOURCE");
-    var vidweb = document.createElement("SOURCE");
-    var vidogg = document.createElement("SOURCE");
+    var vidmp4 = document.getElementById("mp4");
+    var vidweb = document.getElementById("webm");
+    var vidogg = document.getElementById("ogg");
 
     var formats = ["mp4", "webm", "ogg"];
     var elements = [vidmp4, vidweb, vidogg];
-    for (let i = 0; i < formats.length; i++) {
+    for (let i = 0; i < elements.length; i++) {
         elements[i].setAttribute("src", `media/${videoName}_${quality}.${formats[i]}`);
-        elements[i].setAttribute("type", `video/${formats[i]}`);
     }
-    //Cambiamos elementos
-    video.replaceChildren(vidmp4, vidweb, vidogg);
+
     //Actualizamos
     mytime = video.currentTime;
     myload();
