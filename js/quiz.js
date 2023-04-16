@@ -147,7 +147,7 @@ function writeQuestion() {
     */
 
     //window.location.href
-    fetch("/json/quiz-prueba.json", {
+    fetch(window.location.href, {
         method: "POST",
         body: JSON.stringify(newQuiz),
         headers: {
