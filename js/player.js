@@ -12,6 +12,10 @@ var showVideoOptions = true;
 var showVolumeSeekbar = true;
 var showSubtitles = true;
 var showChapters = true;
+var videoSrc = video.children[0].getAttribute("src");
+//Obtenemos el nombre del video
+var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+
 
 //Init
 function init() {
@@ -21,6 +25,17 @@ function init() {
 
     //Progress unit for seekbar
     seekbar.setAttribute('max', time);
+}
+
+//Update video
+function update(value){
+    var formats = ["mp4", "webm", "ogg"];
+    for(let i = 0; i < formats.length; i++){
+        video.children[i].setAttribute("src", `media/${value}_1080.${formats[i]}`);
+    }
+    console.log(value);
+    videoName = value;
+    myload();
 }
 
 //Play and pause events
@@ -237,6 +252,8 @@ function changeChapter(i) {
 }
 
 function changeQuality(quality, mytime) {
+    
+    console.log(videoName);
     //Creamos los elementos
     var vidmp4 = document.createElement("SOURCE");
     var vidweb = document.createElement("SOURCE");
@@ -245,7 +262,7 @@ function changeQuality(quality, mytime) {
     var formats = ["mp4", "webm", "ogg"];
     var elements = [vidmp4, vidweb, vidogg];
     for (let i = 0; i < formats.length; i++) {
-        elements[i].setAttribute("src", `media/chess_video_${quality}.${formats[i]}`);
+        elements[i].setAttribute("src", `media/${videoName}_${quality}.${formats[i]}`);
         elements[i].setAttribute("type", `video/${formats[i]}`);
     }
     //Cambiamos elementos

@@ -39,6 +39,12 @@
     <div class="navbar-color-txt">
         <nav class="navbar navbar-light justify-content-between navbar-bg">
             <a class="navbar-brand navbar-color-txt" href="#">Visor Semántico</a>
+            <form action="">
+                <select name="" id="select_video" oninput="update(value)">
+                    <option value="chess_video">Video 1</option>
+                    <option value="chess_video2">Video 2</option>
+                </select>
+            </form>
             <div class="form-inline">
                 <a class="navbar-brand navbar-color-txt" href="https://www.uib.es/es/">UIB</a>
                 <a class="navbar-brand navbar-color-txt" href="https://github.com/joanmarto/Visor-Semantico">GitHub</a>
@@ -51,6 +57,8 @@
             <video class="video" id="video">
                 <!--Source-->
                 <source src="media/chess_video_1080.mp4" type="video/mp4">
+                <source src="media/chess_video_1080.webm" type="video/webm">
+                <source src="media/chess_video_1080.ogg" type="video/ogg">
                 <!--Default-->
                 Your browser can't show this media
                 <track label="Español" kind="subtitles" srclang="en" src="/media/chess_video_sub_esp.vtt">
