@@ -29,13 +29,17 @@ function init() {
 
 //Update video
 function update(value){
+    //Video update 1080 default
     var formats = ["mp4", "webm", "ogg"];
     for(let i = 0; i < formats.length; i++){
         video.children[i].setAttribute("src", `media/${value}_1080.${formats[i]}`);
     }
-    console.log(value);
+    //Tracks update
+    document.getElementById("subtitlesTrack").setAttribute("src", `/media/${value}_sub_esp.vtt`)
+    document.getElementById("chaptersTrack").setAttribute("src", `/media/${value}_chapters.vtt`)
     videoName = value;
     myload();
+    
 }
 
 //Play and pause events
