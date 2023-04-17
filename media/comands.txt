@@ -5,16 +5,18 @@ ffmpeg -i Video7malo.mp4 -map 0 -default_mode infer_no_subs -t 00:00:55.50 -c co
 ffmpeg -f concat -i lista.txt -c copy chess_video.mp4
 
 ** CONVERTIR 1080P A 720P **
-ffmpeg -i chess_video_1080.mp4 -vf scale=1280:720 chess_video_720.mp4
+ffmpeg -i chess_video_1080.webm -vf scale=1280:720 chess_video_720.webm
 
 ** CONVERTIR 1080P A 480P**
-ffmpeg -i chess_video_1080.mp4 -vf scale=854:480 chess_video_480.mp4
+ffmpeg -i chess_video_1080.webm -vf scale=854:480 chess_video_480.webm
 
 ** CONVERTIR 1080P A 360P**
-ffmpeg -i chess_video_1080.mp4 -vf scale=640:360 chess_video_360.mp4
+ffmpeg -i chess_video_1080.webm -vf scale=640:360 chess_video_360.webm
 
 ** CAMBIAR FORMATO MP4 A WEBM **
 ffmpeg -i chess_video_1080.mp4 chess_video_1080.webm
 
 ** CAMBIAR FORMATO WEBM A OGG **
 ffmpeg -i chess_video_1080.webm -codec:v libtheora -qscale:v 6 -codec:a libvorbis -qscale:a 6 chess_video_1080.ogg
+
+ffmpeg -i chess_video2_1080.mp4 -vf scale=640:360 chess_video2_360.webm

@@ -2,55 +2,69 @@
 var video = document.getElementById("video");
 var addquestion = document.getElementById("add-question-button");
 
+var videoSrc = video.children[0].getAttribute("src");
+//Obtenemos el nombre del video
+var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+
 var quiz;
 var score = [];
 var buttonAQClicked = false;
 
-var xhttp = new XMLHttpRequest();
-xhttp.open('GET', '/json/quiz.json', true)
-xhttp.send();
-xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        quiz = JSON.parse(this.responseText);
+document.addEventListener('onload', getQuizJSON(videoName));
+document.getElementById("video-form").addEventListener('change', () => {
+    videoSrc = video.children[0].getAttribute("src");
+    videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+    getQuizJSON(videoName);
+});
 
-        //Inicialización de la puntuación
-        // 0 => Incorrecto
-        // 1 => Correcto
-        // -1 => Sin responder
-        for (let i = 0; i < quiz.Quiz.length; i++) {
-            score[i] = -1;
-        }
+function getQuizJSON(name) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('GET', `/json/quiz-${name}.json`, true)
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            quiz = JSON.parse(this.responseText);
 
-        video.addEventListener('timeupdate', () => {
+            //Inicialización de la puntuación
+            // 0 => Incorrecto
+            // 1 => Correcto
+            // -1 => Sin responder
             for (let i = 0; i < quiz.Quiz.length; i++) {
+                score[i] = -1;
+            }
 
-                if (quiz.Quiz[i]["time"] == Math.round(video.currentTime)) {
-                    //Se muestra la pregunta
-                    document.getElementById("quiz-question").innerHTML = quiz.Quiz[i]["question"];
-                    document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: ";
-                    for (let j = 0; j < quiz.Quiz[i]["answers"].length; j++) {
-                        let opcion = document.getElementById(`answer${j + 1}`);
-                        //Se muestran las posibles respuestas
-                        opcion.innerHTML = quiz.Quiz[i]["answers"][j];
-                        opcion.addEventListener('click', () => {
-                            if (equals(quiz.Quiz[i]["correctAnswer"], quiz.Quiz[i]["answers"][j]) && score[i] < 0) {
-                                //Respuesta correcta
-                                score[i] = 1;
-                                document.getElementById("score-result").innerHTML = "Score: " + getScore();
-                            } else {
-                                //Respuesta incorrecta
-                                if (score[i] < 0) {
-                                    score[i] = 0;
+            video.addEventListener('timeupdate', () => {
+                for (let i = 0; i < quiz.Quiz.length; i++) {
+
+                    if (quiz.Quiz[i]["time"] == Math.round(video.currentTime)) {
+                        //Se muestra la pregunta
+                        document.getElementById("quiz-question").innerHTML = quiz.Quiz[i]["question"];
+                        document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: ";
+                        for (let j = 0; j < quiz.Quiz[i]["answers"].length; j++) {
+                            let opcion = document.getElementById(`answer${j + 1}`);
+                            //Se muestran las posibles respuestas
+                            opcion.innerHTML = quiz.Quiz[i]["answers"][j];
+                            opcion.addEventListener('click', () => {
+                                if (equals(quiz.Quiz[i]["correctAnswer"], quiz.Quiz[i]["answers"][j]) && score[i] < 0) {
+                                    //Respuesta correcta
+                                    score[i] = 1;
+                                    document.getElementById("score-result").innerHTML = "Score: " + getScore();
+                                } else {
+                                    //Respuesta incorrecta
+                                    if (score[i] < 0) {
+                                        score[i] = 0;
+                                    }
                                 }
-                            }
-                            document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: " + quiz.Quiz[i]["correctAnswer"];
-                        });
+                                document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: " + quiz.Quiz[i]["correctAnswer"];
+                            });
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
 }
+
 
 addquestion.addEventListener('click', () => {
     var formcontainer = document.getElementById("form-container");
@@ -155,11 +169,11 @@ function writeQuestion() {
             "Content-Type": "application/json; charset=UTF-8"
         }
     })
-    .then(response => response.json())
-    .then(json => console.log(json))
-    .catch((err) => console.log(err));
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch((err) => console.log(err));
 
     alert("wait");
     alert("window.location.href: " + window.location.href)
-    
+
 }

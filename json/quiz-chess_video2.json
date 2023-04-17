@@ -1,0 +1,10 @@
+{
+    "@type" : "Quiz",
+    "Quiz": [{
+        "id" : 0,
+        "question" : "¿Por qué se rie Hikaru Nakamura?",
+        "answers" : ["Carlsen juega rey e2 en su segundo movimiento", "Carlsen ha contado un chiste", "Para despistar a su rival"],
+        "correctAnswer": "Carlsen juega rey e2 en su segundo movimiento",
+        "time": 11
+    }]
+}
