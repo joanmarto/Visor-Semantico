@@ -164,6 +164,7 @@ function writeQuestion() {
     xhr.send(data);
     alert("wait");
     
+    charset=UTF-8
 */
     //window.location.href
     let url = "https://gdie2305.ltim.uib.es/";
@@ -171,7 +172,7 @@ function writeQuestion() {
         method: "POST",
         body: JSON.stringify(newQuiz),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json;"
         },
         mode: 'cors'
     }).then(response => response.json())
