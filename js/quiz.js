@@ -123,9 +123,7 @@ function validateForm() {
 }
 
 function writeQuestion() {
-    //console.log("Next id: " + quiz.Quiz.length);
     var sec = Number(document.forms["question-adder"]["min"].value) * 60 + Number(document.forms["question-adder"]["sec"].value);
-    //alert("New time is: " + sec);
     newQuiz = {
         "id": quiz.Quiz.length,
         "question": document.forms["question-adder"]["question"].value,
@@ -133,53 +131,19 @@ function writeQuestion() {
         "correctAnswer": document.forms["question-adder"]["correct-answer"].value,
         "time": sec
     };
-    console.log(newQuiz);
-    /*
-    // Creating a XML object
-    let xhr = new XMLHttpRequest();
-    let url = "https://gdie2305.ltim.uib.es/";
-    console.log("Checkpoint line 121");
-    // open a connection
-    xhr.open("POST", url, true);
-
-    // Set the request header i.e. which type of content you are sending
-    xhr.setRequestHeader("Content-Type", "application/json");
-    console.log("Checkpoint line 127");
-    // Create a state change callback
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-
-            // Print received data from server
-            console.log("Print received data from server: " + this.responseText);
-
-        }else{
-            alert("Error");
-        }
-    };
-    console.log("Checkpoint line 139");
-    // Converting JSON data to string
-    var data = JSON.stringify(newQuiz);
-
-    // Sending data with the request
-    xhr.send(data);
-    alert("wait");
+    quiz.Quiz.push(newQuiz);
+    console.log(quiz.Quiz);
     
-    charset=UTF-8
-*/
     //window.location.href
     let url = "https://gdie2305.ltim.uib.es/";
     fetch(url, {
         method: "POST",
         body: JSON.stringify(newQuiz),
         headers: {
-            "Content-Type": "application/json;"
+            "Content-Type": "application/json; charset=UTF-8"
         },
         mode: 'cors'
     }).then(response => response.json())
     .then(json => console.log(json))
     .catch((err) => console.log(err));
-
-    alert("wait");
-    alert("window.location.href: " + window.location.href)
-
 }
