@@ -126,8 +126,9 @@ function validateForm() {
 }
 
 function writeQuestion() {
-    var sec = Number(document.forms["question-adder"]["min"].value) * 60 + Number(document.forms["question-adder"]["sec"].value);
     let form = document.forms["question-adder"];
+    var sec = Number(form["min"].value) * 60 + Number(form["sec"].value);
+    
     newQuiz = {
         "id": quiz.Quiz.length,
         "question": form["question"].value,
