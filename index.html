@@ -149,7 +149,7 @@
                     <input id="add-question-button" type="submit" value="Añadir Preguntas">
                 </div>
                 <div id="form-container">
-                    <form class="form-quiz-adder" action="" name="question-adder" onsubmit="return validateForm()">
+                    <form class="form-quiz-adder" action="" name="question-adder">
                         <!--Pregunta-->
                         <label for="">Pregunta</label>
                         <input type="text" name="question">
@@ -172,7 +172,7 @@
                         <label for="">Segundos</label>
                         <input type="number" min="0" max="59" name="sec">
                         <!--Colgar pregunta-->
-                        <input type="submit" value="Submit">
+                        <input type="button" value="send" onclick="return validateForm()">
                     </form>
                 </div>
             </div>

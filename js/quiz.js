@@ -116,6 +116,10 @@ function validateForm() {
         }
     }
     writeQuestion();
+    //Eliminamos los valores enviados
+    for (let i = 0; i < document.forms["question-adder"].length - 1; i++) {
+        document.forms["question-adder"][i].value = "";
+    }
 }
 
 function writeQuestion() {
@@ -167,11 +171,11 @@ function writeQuestion() {
         body: JSON.stringify(newQuiz),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
-        }
-    })
-        .then(response => response.json())
-        .then(json => console.log(json))
-        .catch((err) => console.log(err));
+        },
+        mode: 'cors'
+    }).then(response => response.json())
+    .then(json => console.log(json))
+    .catch((err) => console.log(err));
 
     alert("wait");
     alert("window.location.href: " + window.location.href)
