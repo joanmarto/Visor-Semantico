@@ -127,11 +127,12 @@ function validateForm() {
 
 function writeQuestion() {
     var sec = Number(document.forms["question-adder"]["min"].value) * 60 + Number(document.forms["question-adder"]["sec"].value);
+    let form = document.forms["question-adder"];
     newQuiz = {
         "id": quiz.Quiz.length,
-        "question": document.forms["question-adder"]["question"].value,
-        "answers": [document.forms["question-adder"]["answer1"].value, document.forms["question-adder"]["answer2"].value, document.forms["question-adder"]["answer3"].value],
-        "correctAnswer": document.forms["question-adder"]["correct-answer"].value,
+        "question": form["question"].value,
+        "answers": [form["answer1"].value, form["answer2"].value, form["answer3"].value],
+        "correctAnswer": form["correct-answer"].value,
         "time": sec
     };
 
