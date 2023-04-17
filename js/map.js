@@ -1,10 +1,22 @@
 var video = document.getElementById("video");
 
 var chess;
+var map;
 
 var videoSrc = video.children[0].getAttribute("src");
 //Obtenemos el nombre del video
 var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+
+// Initialize the platform object
+var platform = new H.service.Platform({
+  'apikey': 'JoQIuxxUyYvVlI2a4WpIvuNHDWRqRF9-2OIcjQoPUAg'
+});
+
+// Obtain the default map types from the platform object
+var maptypes = platform.createDefaultLayers();
+
+// Get the default map types from the Platform object:
+var defaultLayers = platform.createDefaultLayers();
 
 // Define a const holding SVG mark-up that defines an icon image:
 const svgMarkup = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="-4 0 36 36" version="1.1">' +
@@ -29,10 +41,13 @@ document.addEventListener('onload', getChessJSON(videoName));
 document.getElementById("video-form").addEventListener('change', () => {
   videoSrc = video.children[0].getAttribute("src");
   videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+  //Eliminamos el mapa viejo
+  document.getElementById('mapContainer').childNodes[0].remove();
   getChessJSON(videoName);
 });
 
 function getChessJSON(name) {
+  initMap();
   var xhttp = new XMLHttpRequest();
   xhttp.open('GET', `/json/${name}.json`, true)
   xhttp.send();
@@ -82,29 +97,19 @@ function getChessJSON(name) {
   }
 }
 
+function initMap() {
+  // Instantiate (and display) the map
+  map = new H.Map(
+    document.getElementById('mapContainer'),
+    maptypes.vector.normal.map,
+    {
+      zoom: 3,
+      center: { lng: 13.4, lat: 52.51 }
+    });
 
-// Initialize the platform object
-var platform = new H.service.Platform({
-  'apikey': 'JoQIuxxUyYvVlI2a4WpIvuNHDWRqRF9-2OIcjQoPUAg'
-});
-
-// Obtain the default map types from the platform object
-var maptypes = platform.createDefaultLayers();
-
-// Get the default map types from the Platform object:
-var defaultLayers = platform.createDefaultLayers();
-
-// Instantiate (and display) the map
-var map = new H.Map(
-  document.getElementById('mapContainer'),
-  maptypes.vector.normal.map,
-  {
-    zoom: 3,
-    center: { lng: 13.4, lat: 52.51 }
-  });
-
-// Create the default UI:
-var ui = H.ui.UI.createDefault(map, defaultLayers);
+  // Create the default UI:
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+}
 
 function equals(str1, str2) {
   if (str1.length == str2.length) {
