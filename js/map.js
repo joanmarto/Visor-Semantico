@@ -65,7 +65,7 @@ function getChessJSON(name) {
             if (equals(chapter, cue.text)) {
               addMarker(i);
               //Add info
-              addInfo(chapter);
+              addInfo(chapter, i);
               break;
             }
           }
@@ -75,7 +75,7 @@ function getChessJSON(name) {
   }
 }
 
-function addInfo(chapter) {
+function addInfo(chapter, i) {
   document.getElementById("info-chapter").innerHTML = `<p><strong>Capítulo: </strong>${chapter}</p>`;
   document.getElementById("info-white-player").innerHTML = `<p><strong>Jugador Blanco: </strong>${chess.Chess[i]["whitePlayer"]}</p>`;
   document.getElementById("info-black-player").innerHTML = `<p><strong>Jugador Negro: </strong>${chess.Chess[i]["blackPlayer"]}</p>`;
