@@ -127,12 +127,13 @@ function writeQuestion() {
     var sec = Number(document.forms["question-adder"]["min"].value) * 60 + Number(document.forms["question-adder"]["sec"].value);
     //alert("New time is: " + sec);
     newQuiz = {
-        id: quiz.Quiz.length,
-        question: document.forms["question-adder"]["question"].value,
-        answers: [document.forms["question-adder"]["answer1"].value, document.forms["question-adder"]["answer2"].value, document.forms["question-adder"]["answer3"].value],
-        correctAnswer: document.forms["question-adder"]["correct-answer"].value,
-        time: sec
+        "id": quiz.Quiz.length,
+        "question": document.forms["question-adder"]["question"].value,
+        "answers": [document.forms["question-adder"]["answer1"].value, document.forms["question-adder"]["answer2"].value, document.forms["question-adder"]["answer3"].value],
+        "correctAnswer": document.forms["question-adder"]["correct-answer"].value,
+        "time": sec
     };
+    console.log(newQuiz);
     /*
     // Creating a XML object
     let xhr = new XMLHttpRequest();
