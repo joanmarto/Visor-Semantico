@@ -63,7 +63,7 @@ function getChessJSON(name) {
           for (let i = 0; i < chess.Chess.length; i++) {
             let chapter = chess.Chess[i]["whitePlayer"] + " vs " + chess.Chess[i]["blackPlayer"];
             if (equals(chapter, cue.text)) {
-              addMarker();
+              addMarker(i);
               //Add info
               addInfo(chapter);
               break;
@@ -91,7 +91,7 @@ function addInfo(chapter) {
   }
 }
 
-function addMarker(){
+function addMarker(i){
   // Create an icon, an object holding the latitude and longitude, and a marker:
   var icon = new H.map.Icon(svgMarkup);
   //Getting coordinates
