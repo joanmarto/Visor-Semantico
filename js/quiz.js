@@ -134,8 +134,6 @@ function writeQuestion() {
         "correctAnswer": document.forms["question-adder"]["correct-answer"].value,
         "time": sec
     };
-    quiz.Quiz.push(newQuiz);
-    console.log(quiz.Quiz);
 
     //window.location.href
     let url = "https://gdie2305.ltim.uib.es/";
