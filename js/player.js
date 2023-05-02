@@ -7,7 +7,9 @@ var seekbar = document.getElementById("seekBar");
 var timer = document.getElementById("currentTime");
 var volumeBtn = document.getElementById("volumeBtn");
 var videoOptions = document.getElementById("video-options");
+var optionsList = document.getElementById("options-list");
 
+var usingKeyEvents = false;
 var showVideoOptions = true;
 var showVolumeSeekbar = true;
 var showSubtitles = true;
@@ -39,7 +41,6 @@ function update(value) {
     document.getElementById("chaptersTrack").setAttribute("src", `/media/${value}_chapters.vtt`)
     videoName = value;
     myload();
-
 }
 
 //Play and pause events
@@ -54,21 +55,41 @@ function playpause() {
 }
 
 playPauseBtn.addEventListener('click', playpause);
-video.addEventListener('click', playpause);
+video.addEventListener('click', () => {
+    playpause();
+    usingKeyEvents = true;
+});
+
+//Permite usar las teclas para escribir en el chat
+function controlKeyEvents(){
+    let textInputs = document.getElementsByClassName("input-text");
+    for(let i = 0; i < textInputs.length; i++){
+        textInputs[i].addEventListener('click', () => {
+            if(usingKeyEvents){
+                usingKeyEvents = false;
+            }
+        });
+    }
+}
+controlKeyEvents();
+
 document.addEventListener('keydown', (ev) => {
-    switch (ev.key) {
-        case ' ':
-            playpause();
-            break;
-        case 'ArrowRight':
-            video.currentTime += 5;
-            break;
-        case 'ArrowLeft':
-            video.currentTime -= 5;
-            break;
-        case '0':
-            video.currentTime = 0;
-        default:
+    if (usingKeyEvents) {
+        console.log(ev.key); 
+        switch (ev.key) {
+            case ' ':
+                playpause();
+                break;
+            case 'ArrowRight':
+                video.currentTime += 5;
+                break;
+            case 'ArrowLeft':
+                video.currentTime -= 5;
+                break;
+            case '0':
+                video.currentTime = 0;
+            default:
+        }
     }
 })
 
@@ -109,12 +130,13 @@ seekbar.addEventListener('click', getInput, false);
 function getInput(e) {
     var barwidth = seekbar.clientWidth;
     // find click position
-    var x = e.pageX - this.offsetLeft;
+    var x = e.pageX - this.offsetLeft - video.offsetLeft;
     // translate to video position
     var pct = x / barwidth;
     // now position playback
     var newPos = Math.round(video.duration * pct);
     video.currentTime = newPos;
+    
 }
 
 //Show seekbar volume onclick
@@ -123,7 +145,7 @@ volumeBtn.addEventListener('click', () => {
         showVolumeSeekbar = false;
         //Add volume seekbar input
         document.getElementById("seekVol-container").innerHTML = `<input type=\"range\" id=\"seekVol\" min=\"0\" value=\"${video.volume}\" max=\"1\" step=\"0.1\" ></input>`;
-        myCtrlVid.style.gridTemplateColumns = "5% 17% 40% 32% 3%";
+        myCtrlVid.style.gridTemplateColumns = "5% 15% 50% 25% 5%";
         //Volume control
         var vol = document.getElementById("seekVol");
         vol.addEventListener('input', getVolume, false);
@@ -140,7 +162,7 @@ volumeBtn.addEventListener('dblclick', () => {
     var vol = document.getElementById("seekVol");
     vol.style.visibility = "hidden";
     vol.remove();
-    myCtrlVid.style.gridTemplateColumns = "5% 17% 65% 5% 3%";
+    myCtrlVid.style.gridTemplateColumns = "5% 20% 65% 5% 5%";
 })
 
 //Subtitles
@@ -157,76 +179,70 @@ subsTrack.addEventListener("cuechange", function () {
 videoOptions.addEventListener('click', () => {
     if (showVideoOptions) {
         showVideoOptions = false;
-        var a = this.value;
-        //Div que contendrá los botones
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "-container");
-        a.setAttribute("class", "options-list")
-        myCtrlVid.parentElement.appendChild(a);
-
-        //Botones para cada una de las opciones
-        var options = ["Subtitulos", "1080p", "720p", "480p", "360p", "Vel. +0.25", "Vel. -0.25", "Capítulos"];
-        var b = [];
-        for (let i = 0; i < options.length; i++) {
-            let mytime = 0;
-            b[i] = document.createElement("BUTTON");
-            b[i].setAttribute("value", i.toString());
-            b[i].innerHTML = options[i];
-
-            b[i].addEventListener('click', () => {
-                switch (b[i].value) {
-                    case "0":
-                        let subt = document.getElementsByClassName("subtitles")[0];
-                        if (showSubtitles) {
-                            showSubtitles = false;
-                            subt.style.display = "block";
-                        } else {
-                            showSubtitles = true;
-                            subt.style.display = "none";
-                        }
-                        break;
-                    case "1":
-                        changeQuality(1080, mytime);
-                        break;
-                    case "2":
-                        changeQuality(720, mytime);
-                        break;
-                    case "3":
-                        changeQuality(480, mytime);
-                        break;
-                    case "4":
-                        changeQuality(360, mytime);
-                        break;
-                    case "5":
-                        //Aumenta velocidad
-                        video.playbackRate += 0.25;
-                        break;
-                    case "6":
-                        //Disminuye velocidad
-                        if (video.playbackRate > 0.25) {
-                            video.playbackRate -= 0.25;
-                        }
-                        break;
-                    case "7":
-                        chapters(a);
-                        break;
-                    default:
-                }
-            });
-            a.appendChild(b[i]);
-        }
+        optionsList.style.display = 'grid';
     } else {
         showVideoOptions = true;
         showChapters = true;
-        document.getElementById(this.id + "-container").remove();
+        optionsList.style.display = 'none';
     }
-
 })
+
+function addOpcionsEventListener() {
+    //Botones para cada una de las opciones
+    var options = ["Subtitulos", "1080p", "720p", "480p", "360p", "Vel. +0.25", "Vel. -0.25", "Capítulos"];
+    var b = [];
+    for (let i = 0; i < options.length; i++) {
+        let mytime = 0;
+        b[i] = document.getElementById(`options-list-button-${i}`);
+
+        b[i].addEventListener('click', () => {
+            switch (b[i].value) {
+                case "0":
+                    let subt = document.getElementsByClassName("subtitles")[0];
+                    if (showSubtitles) {
+                        showSubtitles = false;
+                        subt.style.display = "block";
+                    } else {
+                        showSubtitles = true;
+                        subt.style.display = "none";
+                    }
+                    break;
+                case "1":
+                    changeQuality(1080, mytime);
+                    break;
+                case "2":
+                    changeQuality(720, mytime);
+                    break;
+                case "3":
+                    changeQuality(480, mytime);
+                    break;
+                case "4":
+                    changeQuality(360, mytime);
+                    break;
+                case "5":
+                    //Aumenta velocidad
+                    video.playbackRate += 0.25;
+                    break;
+                case "6":
+                    //Disminuye velocidad
+                    if (video.playbackRate > 0.25) {
+                        video.playbackRate -= 0.25;
+                    }
+                    break;
+                case "7":
+                    chapters(optionsList);
+                    break;
+                default:
+            }
+        });
+    }
+}
+addOpcionsEventListener();
 
 //Chapters
 var chaptersTrack = video.textTracks[1];
 chaptersTrack.mode = "hidden"; // Oculta el track por defecto
-function chapters(a) {
+function chapters(optionsList) {
     //Add chapters selector
     if (showChapters) {
         showChapters = false;
@@ -237,7 +253,7 @@ function chapters(a) {
         selector.setAttribute("id", "chapter-select");
         selector.setAttribute("oninput", "changeChapter(value)")
 
-        a.appendChild(form);
+        optionsList.appendChild(form);
         form.appendChild(selector);
         selector.innerHTML = `<option>Selecciona un capítulo</option>`;
         for (let i = 0; i < chaptersTrack.cues.length; i++) {
