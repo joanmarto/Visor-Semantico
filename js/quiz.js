@@ -35,23 +35,23 @@ function addQuestions() {
     // 0 => Incorrecto
     // 1 => Correcto
     // -1 => Sin responder
-    for (let i = 0; i < quiz.Quiz.length; i++) {
+    for (let i = 0; i < quiz.length; i++) {
         score[i] = -1;
     }
 
     video.addEventListener('timeupdate', () => {
-        for (let i = 0; i < quiz.Quiz.length; i++) {
+        for (let i = 0; i < quiz.length; i++) {
 
-            if (quiz.Quiz[i]["time"] == Math.round(video.currentTime)) {
+            if (quiz[i]["time"] == Math.round(video.currentTime)) {
                 //Se muestra la pregunta
-                document.getElementById("quiz-question").innerHTML = quiz.Quiz[i]["question"];
+                document.getElementById("quiz-question").innerHTML = quiz[i]["question"];
                 document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: ";
-                for (let j = 0; j < quiz.Quiz[i]["answers"].length; j++) {
+                for (let j = 0; j < quiz[i]["answers"].length; j++) {
                     let opcion = document.getElementById(`answer${j + 1}`);
                     //Se muestran las posibles respuestas
-                    opcion.innerHTML = quiz.Quiz[i]["answers"][j];
+                    opcion.innerHTML = quiz[i]["answers"][j];
                     opcion.addEventListener('click', () => {
-                        if (equals(quiz.Quiz[i]["correctAnswer"], quiz.Quiz[i]["answers"][j]) && score[i] < 0) {
+                        if (equals(quiz[i]["correctAnswer"], quiz[i]["answers"][j]) && score[i] < 0) {
                             //Respuesta correcta
                             score[i] = 1;
                             document.getElementById("score-result").innerHTML = "Score: " + getScore();
@@ -61,7 +61,7 @@ function addQuestions() {
                                 score[i] = 0;
                             }
                         }
-                        document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: " + quiz.Quiz[i]["correctAnswer"];
+                        document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: " + quiz[i]["correctAnswer"];
                     });
                 }
             }
@@ -131,7 +131,7 @@ function writeQuestion() {
     var sec = Number(form["min"].value) * 60 + Number(form["sec"].value);
     
     newQuiz = {
-        "id": quiz.Quiz.length,
+        "id": quiz.length,
         "question": form["question"].value,
         "answers": [form["answer1"].value, form["answer2"].value, form["answer3"].value],
         "correctAnswer": form["correct-answer"].value,
