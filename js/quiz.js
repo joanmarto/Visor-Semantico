@@ -152,12 +152,12 @@ function writeQuestion() {
         .then(json => console.log(json))
         .catch((err) => console.log(err));
         */
-        let url = "https://gdie2305.ltim.uib.es";
-        let data = { message: "Hola, UIB!" };
+        let url = window.location.href;
+        let dataUIB = { message: "Hola, UIB!" };
         
         fetch(url, {
           method: 'POST',
-          body: JSON.stringify(newQuiz),
+          body: JSON.stringify(dataUIB),
           headers: {
             'Content-Type': 'application/json'
           }
