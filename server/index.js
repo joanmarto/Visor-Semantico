@@ -11,6 +11,7 @@ app.listen(port, (requ, res) => {
     console.log(`Prueba escuchando en puerto ${port}`);
 });
 
+/*
 app.post('/', (req, res) => {
     console.log('Request: ' + req.body);
     console.log('Response: ' + res.body);
@@ -39,6 +40,13 @@ app.post('/', (req, res) => {
     //res.send(quiz);
     res.send(server);
     //res.send('OK');
+});
+*/
+app.use(express.json());
+
+app.post('/endpoint', (req, res) => {
+  console.log("Request 2:" + req.body); // Imprimir los datos recibidos en la consola
+  res.send('OK'); // Responder con una respuesta de "OK"
 });
 
 app.use(express.static('/home/gdie2305/Visor-Semantico/'));
