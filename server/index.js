@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
     var server = {"server":"Success"};
     //res.send(quiz);
     res.send(server);
-    res.send('OK');
+    //res.send('OK');
 });
 
 app.use(express.static('/home/gdie2305/Visor-Semantico/'));
