@@ -46,7 +46,7 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
   console.log("Request 2:" + req.body); // Imprimir los datos recibidos en la consola
-  res.send('OK'); // Responder con una respuesta de "OK"
+  res.send(req.body); // Responder con una respuesta de "OK"
 });
 
 app.use(express.static('/home/gdie2305/Visor-Semantico/'));
