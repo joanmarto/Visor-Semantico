@@ -40,4 +40,4 @@ app.post('/', (req, res) => {
     res.send(server);
 });
 
-app.use(express.static('/home/gdie2305/Visor-Semantico'));
+app.use(express.static('/home/gdie2305/Visor-Semantico/'));
