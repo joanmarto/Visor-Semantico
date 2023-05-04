@@ -130,14 +130,13 @@ function writeQuestion() {
     let form = document.forms["question-adder"];
     var sec = Number(form["min"].value) * 60 + Number(form["sec"].value);
     
-    newQuiz = {
+    let newQuiz = {
         id: quiz.length,
         question: form["question"].value,
         answers: [form["answer1"].value, form["answer2"].value, form["answer3"].value],
         correctAnswer: form["correct-answer"].value,
         time: sec
     };
-    console.log(newQuiz);
     //https://gdie2305.ltim.uib.es
     /*
     let url = window.location.href;
