@@ -131,11 +131,11 @@ function writeQuestion() {
     var sec = Number(form["min"].value) * 60 + Number(form["sec"].value);
     
     newQuiz = {
-        "id": quiz.length,
-        "question": form["question"].value,
-        "answers": [form["answer1"].value, form["answer2"].value, form["answer3"].value],
-        "correctAnswer": form["correct-answer"].value,
-        "time": sec
+        id: quiz.length,
+        question: form["question"].value,
+        answers: [form["answer1"].value, form["answer2"].value, form["answer3"].value],
+        correctAnswer: form["correct-answer"].value,
+        time: sec
     };
     console.log(newQuiz);
     //https://gdie2305.ltim.uib.es
@@ -153,12 +153,12 @@ function writeQuestion() {
         .then(json => console.log(json))
         .catch((err) => console.log(err));
         */
-        const url = "https://gdie2305.ltim.uib.es";
-        const data = { message: "Hola, UIB!" };
+        let url = "https://gdie2305.ltim.uib.es";
+        let data = { message: "Hola, UIB!" };
         
         fetch(url, {
           method: 'POST',
-          body: JSON.stringify(data),
+          body: JSON.stringify(newQuiz),
           headers: {
             'Content-Type': 'application/json'
           }
