@@ -141,7 +141,8 @@ function writeQuestion() {
     let url = "https://gdie2305.ltim.uib.es/";
     fetch(url, {
         method: "POST",
-        body: JSON.stringify(newQuiz),
+        //body: JSON.stringify(newQuiz),
+        body: "hola",
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
