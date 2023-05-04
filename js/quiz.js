@@ -137,9 +137,10 @@ function writeQuestion() {
         "correctAnswer": form["correct-answer"].value,
         "time": sec
     };
-
-    //window.location.href
-    let url = "https://gdie2305.ltim.uib.es/";
+    console.log(newQuiz);
+    //https://gdie2305.ltim.uib.es
+    /*
+    let url = window.location.href;
     fetch(url, {
         method: "POST",
         //body: JSON.stringify(newQuiz),
@@ -151,4 +152,27 @@ function writeQuestion() {
     }).then(response => response.json())
         .then(json => console.log(json))
         .catch((err) => console.log(err));
+        */
+        const url = "https://gdie2305.ltim.uib.es";
+        const data = { message: "Hola, UIB!" };
+        
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Ha ocurrido un error en la solicitud.');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Respuesta recibida:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });   
 }

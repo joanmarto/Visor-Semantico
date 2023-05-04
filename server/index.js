@@ -19,25 +19,26 @@ app.post('/', (req, res) => {
     
     var data = fs.readFileSync('Visor-Semantico/json/quiz-chess_video.json');
     var quiz = JSON.parse(data);
-    console.log(quiz.Quiz);
+    console.log(quiz);
 
     //var newQuiz = req.body;
     var newQuiz = {"question": "?",
                     "answer": "yes"
                 };
     //Añadimos el nuevo objeto
-    quiz.Quiz.push(newQuiz);
+    quiz.push(newQuiz);
 
     //Escribimos en el JSON
-    fs.writeFileSync('Visor-Semantico/json/quiz-chess_video.json', JSON.stringify(quiz.Quiz), (err) => {
+    fs.writeFileSync('Visor-Semantico/json/quiz-chess_video.json', JSON.stringify(quiz), (err) => {
         //Error checking
         if(err) throw err;
         console.log("New quiz added");
     });
     
     var server = {"server":"Success"};
-    //res.send(quiz.Quiz);
+    //res.send(quiz);
     res.send(server);
+    res.send('OK');
 });
 
 app.use(express.static('/home/gdie2305/Visor-Semantico/'));
