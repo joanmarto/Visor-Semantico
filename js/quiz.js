@@ -157,7 +157,7 @@ function writeQuestion() {
         
         fetch(url, {
           method: 'POST',
-          body: JSON.stringify(dataUIB),
+          body: JSON.stringify(newQuiz),
           headers: {
             'Content-Type': 'application/json'
           }
