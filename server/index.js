@@ -44,7 +44,7 @@ app.post('/', (req, res) => {
 */
 app.use(express.json());
 
-app.post('/endpoint', (req, res) => {
+app.post('/', (req, res) => {
   console.log("Request 2:" + req.body); // Imprimir los datos recibidos en la consola
   res.send('OK'); // Responder con una respuesta de "OK"
 });
