@@ -49,7 +49,7 @@ app.post('/', (req, res) => {
 
     //Leemos el JSON
     var data = fs.readFileSync('Visor-Semantico/json/quiz-chess_video.json');
-    var quiz = JSON.parse(data);
+    var quiz = JSON.parse(data).Quiz;
 
     var newQuiz = req.body;
 

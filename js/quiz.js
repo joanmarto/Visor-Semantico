@@ -23,7 +23,7 @@ function getQuizJSON(name) {
     xhttp.send();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            quiz = JSON.parse(this.responseText);
+            quiz = JSON.parse(this.responseText).Quiz;
             console.log(quiz);
             addQuestions();
         }

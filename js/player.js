@@ -75,7 +75,7 @@ controlKeyEvents();
 
 document.addEventListener('keydown', (ev) => {
     if (usingKeyEvents) {
-        console.log(ev.key); 
+        //console.log(ev.key); 
         switch (ev.key) {
             case ' ':
                 playpause();
