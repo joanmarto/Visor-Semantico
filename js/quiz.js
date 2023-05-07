@@ -24,7 +24,6 @@ function getQuizJSON(name) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             quiz = JSON.parse(this.responseText);
-            console.log(quiz);
             addQuestions();
         }
     }
