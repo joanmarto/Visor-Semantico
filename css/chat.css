@@ -1,5 +1,6 @@
 .chat-container {
     min-width: 300px;
+    width: 500px;
     height: 360px;
     background-color: white;
     margin: 1%;
@@ -56,5 +57,6 @@
 }
 
 input[name="text-messages-area"] {
-    width: 85%;
+    width: 90%;
+    color: gray;
 }
