@@ -1,4 +1,4 @@
-//const socket = io();
+const socket = io();
 const messages = document.getElementById('message-chat');
 const btn = document.getElementById('send-msg-btn');
 const input = document.getElementById("chat-text-area");
