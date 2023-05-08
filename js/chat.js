@@ -7,7 +7,7 @@ btn.addEventListener('click', (e) => {
     e.preventDefault();
     console.log("enviando mensage: " + input.value);
     if(input.value){
-        socket.emit('chat mesage', input.value);
+        socket.emit('chat message', input.value);
         input.value = '';
     }
 });
