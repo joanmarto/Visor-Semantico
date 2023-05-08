@@ -43,6 +43,14 @@ app.post('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log("Se ha conectado alguien");
+    //Chat event
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    });
+    
+    socket.on('disconnect', () => {
+        console.log("Se ha desconectado alguien");
+    });
 });
 
 app.use(express.static('/home/gdie2305/Visor-Semantico/'));

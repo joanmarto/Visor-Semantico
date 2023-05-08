@@ -25,14 +25,14 @@
     <link type="text/css" href="css/quiz.css" rel="stylesheet">
     <link type="text/css" href="css/chat.css" rel="stylesheet">
 
+    <!--JavaScript Socket-->
+    <script src="/socket.io/socket.io.js"></script>
+
     <!--JavaScript-->
     <script src="js/player.js" defer></script>
     <script src="js/map.js" defer></script>
     <script src="js/quiz.js" defer></script>
-    
-    <!--JavaScript Socket-->
-    <script src="/socket.io/socket.io.js"></script>
-    <script> const socket = io()</script>
+    <script src="js/chat.js" defer></script>
 
     <!-- Map API-->
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -166,17 +166,15 @@
         <div class="chat-container">
             <div class="chat-content">
                 <!--Messages-->
-                <div class="messages-container">
-                    <p>Hola</p>
-                    <p>Hola</p>
-                    <p>Hola</p>
-                    <p>Hola</p>
-                    <p>Hola</p>
-                </div>
+                <ul id="message-chat" class="messages-container">
+                </ul>
                 <!--Text area-->
                 <div class="textarea-container">
-                    <input class="input-text" type="text" name="text-messages-area" id="">
-                    <input type="button" name=">" value=">" id="">
+                    <form id="form-chat-text-area" action="">
+                        <input id="chat-text-area" class="input-text" type="text" name="text-messages-area" id="">
+                        <input type="button" name=">" value=">">
+                    </form>
+
                 </div>
             </div>
         </div>
