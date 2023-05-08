@@ -5,7 +5,7 @@ const input = document.getElementById("chat-text-area");
 
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("enviando mensage")
+    console.log("enviando mensage: " + input.value);
     if(input.value){
         socket.emit('chat mesage', input.value);
         input.value = '';
