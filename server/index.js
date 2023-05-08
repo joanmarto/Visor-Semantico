@@ -46,8 +46,9 @@ io.on('connection', (socket) => {
     //Chat event
     socket.on('chat message', (msg) => {
         io.emit('chat message', msg);
+        console.log(msg);
     });
-    
+
     socket.on('disconnect', () => {
         console.log("Se ha desconectado alguien");
     });
