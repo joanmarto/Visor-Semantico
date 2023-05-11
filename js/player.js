@@ -29,6 +29,75 @@ function init() {
     seekbar.setAttribute('max', time);
 }
 
+//Init adaptative streaming
+function initStream() {
+    //Remove
+    removeAllChildren(video);
+
+    //Add manifests
+    try {
+        addCmafManifest();
+    } catch (err) {
+        addHlsMpegDashManifest();
+    }
+
+    //Create tracks for subtitles and chapters
+    let subs = document.createElement("track");
+    let chapt = document.createElement("track");
+
+    //Add atributes
+    subs.setAttribute("id", "subtitlesTrack");
+    subs.setAttribute("label", "Español");
+    subs.setAttribute("kind", "subtitles");
+    subs.setAttribute("srclang", "esp");
+    subs.setAttribute("src", `/media/${videoName}_sub_esp.vtt`);
+
+    chapt.setAttribute("id", "chaptersTrack");
+    chapt.setAttribute("kind", "chapters");
+    chapt.setAttribute("label", "Chapters");
+    chapt.setAttribute("src", `/media/${videoName}_chapters.vtt`);
+
+    //Add elements
+    video.appendChild(subs);
+    video.appendChild(chapt);
+
+    //Play video
+    video.play();
+}
+
+function addCmafManifest() {
+    try {
+        let player = dashjs.MediaPlayer().create();
+        const src = `media/cmaf/${videoName}/manifest.mpd`;
+        player.initialize(video, src, false);
+    } catch (err) {
+        throw "CMAFNotAcceptedException";
+    }
+}
+
+function addHlsMpegDashManifest() {
+    if (Hls.isSupported()) {
+        var src = `media/hls/${videoName}/manifest.m3u8`;
+        console.log("HLS is available");
+        video.src = src;
+        var hls = new Hls();
+        hls.loadSource(src);
+        hls.attachMedia(video);
+    } else {
+        console.log("MPEG-DASH is available");
+        var src = `media/mpegdash/${videoName}/manifest.mpd`;
+        var player = dashjs.MediaPlayer().create();
+        player.initialize(video, src, true);
+    }
+}
+
+//Remove all childrens from an element
+function removeAllChildren(element) {
+    while (element.firstChild) {
+        element.removeChild(element.lastChild);
+    }
+}
+
 //Update video
 function update(value) {
     //Video update 1080 default
@@ -40,6 +109,13 @@ function update(value) {
     document.getElementById("subtitlesTrack").setAttribute("src", `/media/${value}_sub_esp.vtt`)
     document.getElementById("chaptersTrack").setAttribute("src", `/media/${value}_chapters.vtt`)
     videoName = value;
+    myload();
+}
+
+//Update streaming video
+function updateStreaming(value){
+    videoName = value;
+    initStream();
     myload();
 }
 
@@ -61,11 +137,11 @@ video.addEventListener('click', () => {
 });
 
 //Permite usar las teclas para escribir en el chat
-function controlKeyEvents(){
+function controlKeyEvents() {
     let textInputs = document.getElementsByClassName("input-text");
-    for(let i = 0; i < textInputs.length; i++){
+    for (let i = 0; i < textInputs.length; i++) {
         textInputs[i].addEventListener('click', () => {
-            if(usingKeyEvents){
+            if (usingKeyEvents) {
                 usingKeyEvents = false;
             }
         });
@@ -108,6 +184,8 @@ function videoTimer(time) {
 
 //Initialization
 video.addEventListener('play', init);
+//Add src video
+initStream();
 
 //Seekbar
 video.addEventListener('timeupdate', () => {
@@ -136,7 +214,6 @@ function getInput(e) {
     // now position playback
     var newPos = Math.round(video.duration * pct);
     video.currentTime = newPos;
-    
 }
 
 //Show seekbar volume onclick

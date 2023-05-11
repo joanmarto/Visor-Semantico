@@ -28,6 +28,12 @@
     <!--JavaScript Socket-->
     <script src="/socket.io/socket.io.js"></script>
 
+    <!--JavaScript HLS-->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <!--JavaScript MPEGDASH-->
+    <script src="http://cdn.dashjs.org/v4.4.0/dash.all.min.js"></script>
+
     <!--JavaScript-->
     <script src="js/player.js" defer></script>
     <script src="js/map.js" defer></script>
@@ -47,7 +53,7 @@
         <nav class="navbar navbar-light justify-content-between navbar-bg">
             <a class="navbar-brand navbar-color-txt" href="#">Visor Semántico</a>
             <form id="video-form" action="">
-                <select name="" id="select_video" oninput="update(value)">
+                <select name="" id="select_video" oninput="updateStreaming(value)">
                     <option value="chess_video">Video 1</option>
                     <option value="chess_video2">Video 2</option>
                 </select>
@@ -69,7 +75,7 @@
                     <source id="ogg" src="media/chess_video_1080.ogg" type="video/ogg">
                     <!--Default-->
                     Your browser can't show this media
-                    <track id="subtitlesTrack" label="Español" kind="subtitles" srclang="en"
+                    <track id="subtitlesTrack" label="Español" kind="subtitles" srclang="esp"
                         src="/media/chess_video_sub_esp.vtt">
                     <track id="chaptersTrack" kind="chapters" label="Chapters" src="/media/chess_video_chapters.vtt">
                 </video>
