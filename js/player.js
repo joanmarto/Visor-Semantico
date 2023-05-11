@@ -18,7 +18,6 @@ var videoSrc = video.children[0].getAttribute("src");
 //Obtenemos el nombre del video
 var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
 
-
 //Init
 function init() {
     //Video duration
@@ -71,6 +70,7 @@ function addCmafManifest() {
         const src = `media/cmaf/${videoName}/manifest.mpd`;
         player.initialize(video, src, false);
     } catch (err) {
+        console.log("CMAF is not available");
         throw "CMAFNotAcceptedException";
     }
 }
@@ -182,10 +182,11 @@ function videoTimer(time) {
     duration.innerHTML = vidMinutes + ":" + vidSeconds;
 }
 
-//Initialization
-video.addEventListener('play', init);
 //Add src video
 initStream();
+
+//Initialization
+video.addEventListener('play', init);
 
 //Seekbar
 video.addEventListener('timeupdate', () => {

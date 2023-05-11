@@ -19,7 +19,7 @@ document.getElementById("video-form").addEventListener('change', () => {
 
 function getQuizJSON(name) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', `/json/quiz-${name}.json`, true)
+    xhttp.open('GET', `/json/quiz-${name}.json`, true);
     xhttp.send();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -128,7 +128,7 @@ function validateForm() {
 function writeQuestion() {
     let form = document.forms["question-adder"];
     var sec = Number(form["min"].value) * 60 + Number(form["sec"].value);
-    
+
     let newQuiz = {
         id: quiz.length,
         question: form["question"].value,
@@ -136,41 +136,25 @@ function writeQuestion() {
         correctAnswer: form["correct-answer"].value,
         time: sec
     };
-    //https://gdie2305.ltim.uib.es
-    /*
+
     let url = window.location.href;
     fetch(url, {
-        method: "POST",
-        //body: JSON.stringify(newQuiz),
-        body: "hola",
+        method: 'POST',
+        body: JSON.stringify(newQuiz),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-        mode: 'cors'
-    }).then(response => response.json())
-        .then(json => console.log(json))
-        .catch((err) => console.log(err));
-        */
-        let url = window.location.href;
-        let dataUIB = { message: "Hola, UIB!" };
-        
-        fetch(url, {
-          method: 'POST',
-          body: JSON.stringify(newQuiz),
-          headers: {
             'Content-Type': 'application/json'
-          }
-        })
+        }
+    })
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Ha ocurrido un error en la solicitud.');
-          }
-          return response.json();
+            if (!response.ok) {
+                throw new Error('Ha ocurrido un error en la solicitud.');
+            }
+            return response.json();
         })
         .then(data => {
-          console.log('Respuesta recibida:', data);
+            console.log('Respuesta recibida:', data);
         })
         .catch(error => {
-          console.error('Error:', error);
-        });   
+            console.error('Error:', error);
+        });
 }
