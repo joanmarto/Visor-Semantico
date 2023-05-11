@@ -14,6 +14,17 @@
     color: white;
 }
 
+#GoLiveBtn{
+    color:red;
+    text-decoration: none;
+    padding: 2px;
+    
+}
+
+#GoLiveBtn:hover{
+    border: 2px red solid;
+}
+
 a {
     color: white;
     display: inline-block;
