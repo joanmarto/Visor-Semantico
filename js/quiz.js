@@ -11,9 +11,10 @@ var score = [];
 var buttonAQClicked = false;
 
 document.addEventListener('onload', getQuizJSON(videoName));
-document.getElementById("video-form").addEventListener('change', () => {
-    videoSrc = video.children[0].getAttribute("src");
-    videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+document.getElementById("select_video").addEventListener('input', (option) => {
+    let child = option.AT_TARGET - 1;
+    videoName = document.getElementById("select_video").children[option.AT_TARGET - 1].value;
+    console.log(`VIDEO READY: ${videoName}`);
     getQuizJSON(videoName);
 });
 

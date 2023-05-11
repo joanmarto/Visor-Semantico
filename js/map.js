@@ -38,9 +38,12 @@ const svgMarkup = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
   '</svg>';
 
 document.addEventListener('onload', getChessJSON(videoName));
-document.getElementById("video-form").addEventListener('change', () => {
-  videoSrc = video.children[0].getAttribute("src");
-  videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+document.getElementById("select_video").addEventListener('input', (option) => {
+
+  let child = option.AT_TARGET - 1;
+  console.log(child);
+  videoName = document.getElementById("select_video").children[option.AT_TARGET - 1].value;
+
   //Eliminamos el mapa viejo
   document.getElementById('mapContainer').childNodes[0].remove();
   getChessJSON(videoName);
@@ -91,7 +94,7 @@ function addInfo(chapter, i) {
   }
 }
 
-function addMarker(i){
+function addMarker(i) {
   // Create an icon, an object holding the latitude and longitude, and a marker:
   var icon = new H.map.Icon(svgMarkup);
   //Getting coordinates
