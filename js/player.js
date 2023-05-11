@@ -22,7 +22,6 @@ var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastI
 function init() {
     //Video duration
     var time = video.duration;
-    console.log("Duration: " + time);
     videoTimer(time);
 
     //Progress unit for seekbar
