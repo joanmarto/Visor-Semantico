@@ -1,4 +1,5 @@
 var video = document.getElementById("video");
+var select = document.getElementById("select_video");
 
 var chess;
 var map;
@@ -38,11 +39,9 @@ const svgMarkup = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
   '</svg>';
 
 document.addEventListener('onload', getChessJSON(videoName));
-document.getElementById("select_video").addEventListener('input', (option) => {
+select.addEventListener('input', () => {
 
-  let child = option.AT_TARGET - 1;
-  console.log(child);
-  videoName = document.getElementById("select_video").children[option.AT_TARGET - 1].value;
+  videoName = select.options[select.selectedIndex].value;
 
   //Eliminamos el mapa viejo
   document.getElementById('mapContainer').childNodes[0].remove();

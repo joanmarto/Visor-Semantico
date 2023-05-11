@@ -1,6 +1,7 @@
 //Variables
 var video = document.getElementById("video");
 var addquestion = document.getElementById("add-question-button");
+var select = document.getElementById("select_video");
 
 var videoSrc = video.children[0].getAttribute("src");
 //Obtenemos el nombre del video
@@ -11,10 +12,8 @@ var score = [];
 var buttonAQClicked = false;
 
 document.addEventListener('onload', getQuizJSON(videoName));
-document.getElementById("select_video").addEventListener('input', (option) => {
-    let child = option.AT_TARGET - 1;
-    videoName = document.getElementById("select_video").children[option.AT_TARGET - 1].value;
-    console.log(`VIDEO READY: ${videoName}`);
+select.addEventListener('input', () => {
+    videoName = select.options[select.selectedIndex].value;
     getQuizJSON(videoName);
 });
 
