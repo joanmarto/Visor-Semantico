@@ -22,6 +22,7 @@ var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastI
 function init() {
     //Video duration
     var time = video.duration;
+    console.log("Duration: " + time);
     videoTimer(time);
 
     //Progress unit for seekbar
@@ -59,9 +60,6 @@ function initStream() {
     //Add elements
     video.appendChild(subs);
     video.appendChild(chapt);
-
-    //Play video
-    video.play();
 }
 
 function addCmafManifest() {
@@ -182,11 +180,11 @@ function videoTimer(time) {
     duration.innerHTML = vidMinutes + ":" + vidSeconds;
 }
 
-//Add src video
-initStream();
-
 //Initialization
 video.addEventListener('play', init);
+
+//Add src video
+initStream();
 
 //Seekbar
 video.addEventListener('timeupdate', () => {
