@@ -110,7 +110,7 @@ function update(value) {
 }
 
 //Update streaming video
-function updateStreaming(value){
+function updateStreaming(value) {
     videoName = value;
     initStream();
     myload();
@@ -312,7 +312,56 @@ function addOpcionsEventListener() {
         });
     }
 }
-addOpcionsEventListener();
+
+function addOptionsLiveStreamEventListener() {
+    //Botones para cada una de las opciones
+    const options =
+        [{ option: "Subtitulos", value: 0 },
+        { option: "Vel. +0.25", value: 5 },
+        { option: "Vel. -0.25", value: 6 },
+        { option: "Capítulos", value: 7 },
+        { option: "HLS", value: 8 }];
+    var b = [];
+    for (let i = 0; i < options.length; i++) {
+        b[i] = document.getElementById(`options-list-button-${options[i].value}`);
+
+        b[i].addEventListener('click', () => {
+            switch (b[i].value) {
+                case "0":
+                    let subt = document.getElementsByClassName("subtitles")[0];
+                    if (showSubtitles) {
+                        showSubtitles = false;
+                        subt.style.display = "block";
+                    } else {
+                        showSubtitles = true;
+                        subt.style.display = "none";
+                    }
+                    break;
+                case "5":
+                    //Aumenta velocidad
+                    video.playbackRate += 0.25;
+                    break;
+                case "6":
+                    //Disminuye velocidad
+                    if (video.playbackRate > 0.25) {
+                        video.playbackRate -= 0.25;
+                    }
+                    break;
+                case "7":
+                    chapters(optionsList);
+                    break;
+                case "8":
+                    console.log("Case 8");
+                    break;
+
+                default:
+            }
+        });
+    }
+}
+
+//addOpcionsEventListener();
+addOptionsLiveStreamEventListener();
 
 //Chapters
 var chaptersTrack = video.textTracks[1];
