@@ -14,6 +14,7 @@ var showVideoOptions = true;
 var showVolumeSeekbar = true;
 var showSubtitles = true;
 var showChapters = true;
+var showStreamingSelector = true;
 var videoSrc = video.children[0].getAttribute("src");
 //Obtenemos el nombre del video
 var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
@@ -351,7 +352,7 @@ function addOptionsLiveStreamEventListener() {
                     chapters(optionsList);
                     break;
                 case "8":
-                    console.log("Case 8");
+                    addStreamingProtocolSelector(optionsList);
                     break;
 
                 default:
@@ -362,6 +363,74 @@ function addOptionsLiveStreamEventListener() {
 
 //addOpcionsEventListener();
 addOptionsLiveStreamEventListener();
+
+//Streaming selector
+function addStreamingProtocolSelector(optionList) {
+    //Add streaming selector
+    if (showStreamingSelector) {
+        showStreamingSelector = false;
+        var form = document.createElement("FORM");
+        var selector = document.createElement("SELECT");
+        const protocols = ["HLS", "MPEG-DASH", "CMAF"];
+
+        form.setAttribute("id", "streaming-protocol-form");
+        selector.setAttribute("id", "streaming-protocol-select");
+        selector.addEventListener('input', () => { changeStreamingProtocol(selector) });
+
+        optionsList.appendChild(form);
+        form.appendChild(selector);
+        selector.innerHTML = `<option>Selecciona un protocolo de streaming</option>`;
+        for (let i = 0; i < protocols.length; i++) {
+            selector.innerHTML += `<option value=${i}>${protocols[i]}</option>`;
+        }
+
+    } else {
+        showStreamingSelector = true;
+        document.getElementById("streaming-protocol-form").remove();
+    }
+}
+
+function changeStreamingProtocol(protocol) {
+    const option = protocol.options[protocol.selectedIndex].innerHTML;
+    switch (option) {
+        case "HLS":
+            if (Hls.isSupported()) {
+                var src = `media/hls/${videoName}/manifest.m3u8`;
+                console.log("HLS is available");
+                video.src = src;
+                var hls = new Hls();
+                hls.loadSource(src);
+                hls.attachMedia(video);
+            } else {
+                console.err("HLS is not available");
+                throw "HLSNotAcceptedException";
+            }
+            break;
+        case "MPEG-DASH":
+            try {
+                var src = `media/mpegdash/${videoName}/manifest.mpd`;
+                var player = dashjs.MediaPlayer().create();
+                player.initialize(video, src, true);
+                console.log("MPEG-DASH is available");
+            } catch (err) {
+                console.err("MPEG-DASH is not available: " + err);
+                throw "MPEG-DASHNotAcceptedException";
+            }
+            break;
+        case "CMAF":
+            try {
+                let player = dashjs.MediaPlayer().create();
+                const src = `media/cmaf/${videoName}/manifest.mpd`;
+                player.initialize(video, src, false);
+            } catch (err) {
+                console.err("CMAF is not available: " + err);
+                throw "CMAFNotAcceptedException";
+            }
+            break;
+        default:
+
+    }
+}
 
 //Chapters
 var chaptersTrack = video.textTracks[1];
@@ -388,7 +457,6 @@ function chapters(optionsList) {
         showChapters = true;
         document.getElementById("chapter-form").remove();
     }
-
 }
 
 function changeChapter(i) {
