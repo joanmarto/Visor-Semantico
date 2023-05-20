@@ -1,13 +1,14 @@
-//Variables for video player elements
-var myCtrlVid = document.getElementById("myCtrlVid");
-var video = document.getElementById("video");
-var playPauseBtn = document.getElementById("playPauseBtn");
-var duration = document.getElementById("duration");
-var seekbar = document.getElementById("seekBar");
-var timer = document.getElementById("currentTime");
-var volumeBtn = document.getElementById("volumeBtn");
-var videoOptions = document.getElementById("video-options");
-var optionsList = document.getElementById("options-list");
+//Variables and constants for video player elements
+const myCtrlVid = document.getElementById("myCtrlVid");
+const video = document.getElementById("video");
+const playPauseBtn = document.getElementById("playPauseBtn");
+const duration = document.getElementById("duration");
+const seekbar = document.getElementById("seekBar");
+const timer = document.getElementById("currentTime");
+const volumeBtn = document.getElementById("volumeBtn");
+const videoOptions = document.getElementById("video-options");
+const optionsList = document.getElementById("options-list");
+const subtitlesButton = document.getElementById("subtitles-button");
 
 var usingKeyEvents = false;
 var showVideoOptions = true;
@@ -251,6 +252,17 @@ subsTrack.addEventListener("cuechange", function () {
     }
 });
 
+subtitlesButton.addEventListener('click', () => {
+    let subt = document.getElementsByClassName("subtitles")[0];
+    if (showSubtitles) {
+        showSubtitles = false;
+        subt.style.display = "block";
+    } else {
+        showSubtitles = true;
+        subt.style.display = "none";
+    }
+});
+
 //Opciones 
 videoOptions.addEventListener('click', () => {
     if (showVideoOptions) {
@@ -265,24 +277,20 @@ videoOptions.addEventListener('click', () => {
 
 function addOpcionsEventListener() {
     //Botones para cada una de las opciones
-    var options = ["Subtitulos", "1080p", "720p", "480p", "360p", "Vel. +0.25", "Vel. -0.25", "Capítulos"];
+    const options = [{option: "1080p", value: 1},
+                    {option: "720p", value: 2},
+                    {option: "480p", value: 3},
+                    {option: "360p", value: 4},
+                    {option: "Vel. +0.25", value: 5},
+                    {option: "Vel. -0.25", value: 6},
+                    {option: "Capítulos", value: 7}];
     var b = [];
     for (let i = 0; i < options.length; i++) {
         let mytime = 0;
-        b[i] = document.getElementById(`options-list-button-${i}`);
+        b[i] = document.getElementById(`options-list-button-${options[i].value}`);
 
         b[i].addEventListener('click', () => {
             switch (b[i].value) {
-                case "0":
-                    let subt = document.getElementsByClassName("subtitles")[0];
-                    if (showSubtitles) {
-                        showSubtitles = false;
-                        subt.style.display = "block";
-                    } else {
-                        showSubtitles = true;
-                        subt.style.display = "none";
-                    }
-                    break;
                 case "1":
                     changeQuality(1080, mytime);
                     break;
@@ -317,8 +325,7 @@ function addOpcionsEventListener() {
 function addOptionsLiveStreamEventListener() {
     //Botones para cada una de las opciones
     const options =
-        [{ option: "Subtitulos", value: 0 },
-        { option: "Vel. +0.25", value: 5 },
+        [{ option: "Vel. +0.25", value: 5 },
         { option: "Vel. -0.25", value: 6 },
         { option: "Capítulos", value: 7 },
         { option: "HLS", value: 8 }];
@@ -328,16 +335,6 @@ function addOptionsLiveStreamEventListener() {
 
         b[i].addEventListener('click', () => {
             switch (b[i].value) {
-                case "0":
-                    let subt = document.getElementsByClassName("subtitles")[0];
-                    if (showSubtitles) {
-                        showSubtitles = false;
-                        subt.style.display = "block";
-                    } else {
-                        showSubtitles = true;
-                        subt.style.display = "none";
-                    }
-                    break;
                 case "5":
                     //Aumenta velocidad
                     video.playbackRate += 0.25;

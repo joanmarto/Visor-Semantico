@@ -1,9 +1,9 @@
 //Variables
-var video = document.getElementById("video");
+var videoQuiz = document.getElementById("video");
 var addquestion = document.getElementById("add-question-button");
 var select = document.getElementById("select_video");
 
-var videoSrc = video.children[0].getAttribute("src");
+var videoSrc = videoQuiz.children[0].getAttribute("src");
 //Obtenemos el nombre del video
 var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
 
@@ -38,10 +38,10 @@ function addQuestions() {
         score[i] = -1;
     }
 
-    video.addEventListener('timeupdate', () => {
+    videoQuiz.addEventListener('timeupdate', () => {
         for (let i = 0; i < quiz.length; i++) {
 
-            if (quiz[i]["time"] == Math.round(video.currentTime)) {
+            if (quiz[i]["time"] == Math.round(videoQuiz.currentTime)) {
                 //Se muestra la pregunta
                 document.getElementById("quiz-question").innerHTML = quiz[i]["question"];
                 document.getElementById("correct-answer-value").innerHTML = "Respuesta Correcta: ";

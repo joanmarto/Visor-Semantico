@@ -1,10 +1,10 @@
-var video = document.getElementById("video");
-var select = document.getElementById("select_video");
+const videoId = document.getElementById("video");
+const selectVideo = document.getElementById("select_video");
 
 var chess;
 var map;
 
-var videoSrc = video.children[0].getAttribute("src");
+var videoSrc = videoId.children[0].getAttribute("src");
 //Obtenemos el nombre del video
 var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
 
@@ -39,9 +39,9 @@ const svgMarkup = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
   '</svg>';
 
 document.addEventListener('onload', getChessJSON(videoName));
-select.addEventListener('input', () => {
+selectVideo.addEventListener('input', () => {
 
-  videoName = select.options[select.selectedIndex].value;
+  videoName = selectVideo.options[selectVideo.selectedIndex].value;
 
   //Eliminamos el mapa viejo
   document.getElementById('mapContainer').childNodes[0].remove();
@@ -57,7 +57,7 @@ function getChessJSON(name) {
     if (this.readyState == 4 && this.status == 200) {
       chess = JSON.parse(this.responseText);
 
-      var chaptersTrack = video.textTracks[1];
+      var chaptersTrack = videoId.textTracks[1];
       chaptersTrack.mode = "hidden"; // Oculta el track por defecto
       chaptersTrack.addEventListener("cuechange", function () {
         var cue = this.activeCues[0];
