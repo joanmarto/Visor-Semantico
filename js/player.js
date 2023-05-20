@@ -270,7 +270,7 @@ videoOptions.addEventListener('click', () => {
         optionsList.style.display = 'grid';
     } else {
         showVideoOptions = true;
-        showChapters = true;
+        showChapters = false;
         optionsList.style.display = 'none';
     }
 })
