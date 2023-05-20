@@ -45,6 +45,7 @@ function initStream() {
     //Create tracks for subtitles and chapters
     let subs = document.createElement("track");
     let chapt = document.createElement("track");
+    let meta = document.createElement("track");
 
     //Add atributes
     subs.setAttribute("id", "subtitlesTrack");
@@ -58,9 +59,15 @@ function initStream() {
     chapt.setAttribute("label", "Chapters");
     chapt.setAttribute("src", `/media/vtt/${videoName}_chapters.vtt`);
 
+    meta.setAttribute("id", "metadataTrack");
+    meta.setAttribute("kind", "metadata");
+    meta.setAttribute("label", "Metadata");
+    meta.setAttribute("src", `/media/vtt/${videoName}_meta.vtt`);
+
     //Add elements
     video.appendChild(subs);
     video.appendChild(chapt);
+    video.appendChild(meta);
 }
 
 function addCmafManifest() {
@@ -427,6 +434,16 @@ function changeStreamingProtocol(protocol) {
         default:
     }
 }
+
+//Show metadata
+var metaTrack = videoId.textTracks[2];
+metaTrack.mode = "hidden";
+metaTrack.addEventListener('cuechange', function () {
+  console.log(metaTrack.cues.length);
+  for(let i = 0; i < metaTrack.cues.length; i++){
+    console.log(JSON.parse(metaTrack.cues[i].text));
+  }
+});
 
 //Chapters
 var chaptersTrack = video.textTracks[1];
