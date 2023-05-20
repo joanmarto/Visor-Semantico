@@ -1,6 +1,13 @@
-#playPauseBtn, #volumeBtn, #video-options{
+#playPauseBtn, #video-options{
     margin: auto;
+    height: 75%;
+    width: 75%;
+}
 
+#volumeBtn{
+    margin: auto;
+    height: 20px;
+    width: 20px;
 }
 
 .video {
@@ -41,7 +48,7 @@
 }
 
 .video-timer-text{
-    font-size: medium;
+    font-size: small;
     text-align: center;
     margin: auto;
 }
@@ -110,7 +117,7 @@
     width: inherit;
     height: 35px;
     display: grid;
-    grid-template-columns: 5% 20% 65% 5% 5%;
+    grid-template-columns: 5% 15% 65% 5% 5% 5%;
     align-items: center;
     justify-content: center;
 }

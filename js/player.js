@@ -50,12 +50,12 @@ function initStream() {
     subs.setAttribute("label", "Español");
     subs.setAttribute("kind", "subtitles");
     subs.setAttribute("srclang", "esp");
-    subs.setAttribute("src", `/media/${videoName}_sub_esp.vtt`);
+    subs.setAttribute("src", `/media/vtt/${videoName}_sub_esp.vtt`);
 
     chapt.setAttribute("id", "chaptersTrack");
     chapt.setAttribute("kind", "chapters");
     chapt.setAttribute("label", "Chapters");
-    chapt.setAttribute("src", `/media/${videoName}_chapters.vtt`);
+    chapt.setAttribute("src", `/media/vtt/${videoName}_chapters.vtt`);
 
     //Add elements
     video.appendChild(subs);
@@ -104,8 +104,8 @@ function update(value) {
         video.children[i].setAttribute("src", `media/${value}_1080.${formats[i]}`);
     }
     //Tracks update
-    document.getElementById("subtitlesTrack").setAttribute("src", `/media/${value}_sub_esp.vtt`)
-    document.getElementById("chaptersTrack").setAttribute("src", `/media/${value}_chapters.vtt`)
+    document.getElementById("subtitlesTrack").setAttribute("src", `/media/vtt/${value}_sub_esp.vtt`)
+    document.getElementById("chaptersTrack").setAttribute("src", `/media/vtt/${value}_chapters.vtt`)
     videoName = value;
     myload();
 }
@@ -428,7 +428,6 @@ function changeStreamingProtocol(protocol) {
             }
             break;
         default:
-
     }
 }
 

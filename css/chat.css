@@ -10,7 +10,7 @@
 }
 
 .chat-content {
-    height: 350px;
+    height: auto;
     margin: 1%;
     display: grid;
     grid-template-rows: 90% 10%;

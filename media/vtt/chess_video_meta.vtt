@@ -1,0 +1,106 @@
+WEBVTT FILE
+
+00:00:00.000 --> 00:00:58.000
+{
+    "id": 0,
+    "whitePlayer": "Karl Blom",
+    "blackPlayer": "Niels Jensen",
+    "year": "1934",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.402602, 
+        "longitude": 10.390641
+    },
+    "opening": "",
+    "defense": "Defensa francesa"
+}
+
+00:00:58.000 --> 00:01:53.000
+{
+    "id": 1,
+    "whitePlayer": "Bobby Fischer",
+    "blackPlayer": "Pal Benko",
+    "year": "1963",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.713892,  
+        "longitude": -74.005484
+    },
+    "opening": "",
+    "defense": "Defensa Pirc"
+}
+
+00:01:53.000 --> 00:02:48.000
+{
+    "id": 2,
+    "whitePlayer": "Aron Nimzowitsch",
+    "blackPlayer": "Aficionado desconocido",
+    "year": "",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 0.0, 
+        "longitude": 0.0
+    },
+    "opening": "Apertura Española",
+    "defense": ""
+}
+
+00:02:48.000 --> 00:03:45.000
+{
+    "id": 3,
+    "whitePlayer": "Anatoli Karpov",
+    "blackPlayer": "Peter Leko",
+    "year": "1995",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.218907, 
+        "longitude": 6.562830
+    },
+    "opening": "Apertura de Peón de Dama",
+    "defense": ""
+}
+
+00:03:45.000 --> 00:04:44.000
+{
+    "id": 4,
+    "whitePlayer": "William H.K. Pollock",
+    "blackPlayer": "S. Langleben",
+    "year": "1893",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.886204, 
+        "longitude": -78.877096 
+    },
+    "opening": "Gambito Escoces",
+    "defense": ""
+}
+
+00:04:44.000 --> 00:05:38.000
+{
+    "id": 5,
+    "whitePlayer": "Alexander Alekhine",
+    "blackPlayer": "Aficionado desconocido",
+    "year": "1936",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 0.0, 
+        "longitude": 0.0
+    },
+    "opening": "Apertura de Peón de Rey",
+    "defense": ""
+}
+
+00:05:38.000 --> 00:06:33.000
+{
+    "id": 6,
+    "whitePlayer": "Sanders",
+    "blackPlayer": "Aficionado desconocido",
+    "year": "1910",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.677810, 
+        "longitude": -73.938517
+    },
+    "opening": "",
+    "defense": "Contragambito Falkbeer"
+}
