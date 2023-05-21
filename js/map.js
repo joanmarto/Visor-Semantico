@@ -38,7 +38,7 @@ const svgMarkup = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
   '</g>' +
   '</svg>';
 
-document.addEventListener('onload', getChessJSON(videoName));
+document.addEventListener('onload', initMap());
 selectVideo.addEventListener('input', () => {
 
   videoName = selectVideo.options[selectVideo.selectedIndex].value;
@@ -49,44 +49,23 @@ selectVideo.addEventListener('input', () => {
   initMap();
 });
 
-//Chapter changes
-//var chaptersTrack = videoId.textTracks[1];
-var metaTrack = videoId.textTracks[2];
-//chaptersTrack.mode = "hidden"; // Oculta el track por defecto
-metaTrack.mode = "hidden";
-/*
-chaptersTrack.addEventListener("cuechange", function () {
-  var cue = this.activeCues[0];
-  if (cue) {
-    for (let i = 0; i < chess.Chess.length; i++) {
-      let chapter = chess.Chess[i]["whitePlayer"] + " vs " + chess.Chess[i]["blackPlayer"];
-      if (equals(chapter, cue.text)) {
-        addMarker(i);
-        //Add info
-        addInfo(chapter, i);
-        break;
-      }
+function initMetadata() {
+  var metaTrack = videoId.textTracks[2];
+  metaTrack.mode = "hidden";
+  
+  //Show metadata
+  metaTrack.addEventListener('cuechange', function () {
+    var cue = this.activeCues[0];
+    if (cue) {
+      let data = JSON.parse(cue.text);
+      let chapter = `${data.whitePlayer} vs ${data.blackPlayer}`;
+      //console.log("Chapter: " + chapter);
+      //console.log(data);
+      addMarker(data.geo.latitude, data.geo.longitude);
+      addInfo(data, chapter);
     }
-  }
-});*/
-
-//Show metadata
-metaTrack.addEventListener('cuechange', function () {
-  //console.log(metaTrack.cues.length);
-  //for(let i = 0; i < metaTrack.cues.length; i++){
-  //console.log(JSON.parse(metaTrack.cues[i].text));
-  //}
-  var cue = this.activeCues[0];
-  //console.log(cue);
-  if (cue) {
-    let data = JSON.parse(cue.text);
-    let chapter = `${data.whitePlayer} vs ${data.blackPlayer}`;
-    console.log("Chapter: " + chapter);
-    console.log(data);
-    addMarker(data.geo.latitude, data.geo.longitude)
-    addInfo(data, chapter);
-  }
-});
+  });
+}
 
 function addInfo(data, chapter) {
   document.getElementById("info-chapter").innerHTML = `<p><strong>Capítulo: </strong>${chapter}</p>`;
@@ -101,21 +80,6 @@ function addInfo(data, chapter) {
     document.getElementById("info-opening-defense").innerHTML = `<p><strong>Apertura: </strong>${data.opening}</p>`;
   } else {
     document.getElementById("info-opening-defense").innerHTML = `<p><strong>Defensa: </strong>${data.defense}</p>`;
-  }
-}
-
-function getChessJSON(name) {
-  initMap();
-
-  var xhttp = new XMLHttpRequest();
-  xhttp.open('GET', `/json/${name}.json`, true);
-  xhttp.send();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      chess = JSON.parse(this.responseText);
-
-
-    }
   }
 }
 
@@ -134,6 +98,8 @@ function addMarker(latitude, longitude) {
 }
 
 function initMap() {
+  // Init eventListener
+  initMetadata();
   // Instantiate (and display) the map
   map = new H.Map(
     document.getElementById('mapContainer'),
