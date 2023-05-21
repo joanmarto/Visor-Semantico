@@ -435,16 +435,6 @@ function changeStreamingProtocol(protocol) {
     }
 }
 
-//Show metadata
-var metaTrack = videoId.textTracks[2];
-metaTrack.mode = "hidden";
-metaTrack.addEventListener('cuechange', function () {
-  console.log(metaTrack.cues.length);
-  for(let i = 0; i < metaTrack.cues.length; i++){
-    console.log(JSON.parse(metaTrack.cues[i].text));
-  }
-});
-
 //Chapters
 var chaptersTrack = video.textTracks[1];
 chaptersTrack.mode = "hidden"; // Oculta el track por defecto

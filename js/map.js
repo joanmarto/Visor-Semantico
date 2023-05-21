@@ -45,11 +45,68 @@ selectVideo.addEventListener('input', () => {
 
   //Eliminamos el mapa viejo
   document.getElementById('mapContainer').childNodes[0].remove();
-  getChessJSON(videoName);
+  //getChessJSON(videoName);
+  initMap();
 });
+
+//Chapter changes
+//var chaptersTrack = videoId.textTracks[1];
+var metaTrack = videoId.textTracks[2];
+//chaptersTrack.mode = "hidden"; // Oculta el track por defecto
+metaTrack.mode = "hidden";
+/*
+chaptersTrack.addEventListener("cuechange", function () {
+  var cue = this.activeCues[0];
+  if (cue) {
+    for (let i = 0; i < chess.Chess.length; i++) {
+      let chapter = chess.Chess[i]["whitePlayer"] + " vs " + chess.Chess[i]["blackPlayer"];
+      if (equals(chapter, cue.text)) {
+        addMarker(i);
+        //Add info
+        addInfo(chapter, i);
+        break;
+      }
+    }
+  }
+});*/
+
+//Show metadata
+metaTrack.addEventListener('cuechange', function () {
+  //console.log(metaTrack.cues.length);
+  //for(let i = 0; i < metaTrack.cues.length; i++){
+  //console.log(JSON.parse(metaTrack.cues[i].text));
+  //}
+  var cue = this.activeCues[0];
+  //console.log(cue);
+  if (cue) {
+    let data = JSON.parse(cue.text);
+    let chapter = `${data.whitePlayer} vs ${data.blackPlayer}`;
+    console.log("Chapter: " + chapter);
+    console.log(data);
+    addMarker(data.geo.latitude, data.geo.longitude)
+    addInfo(data, chapter);
+  }
+});
+
+function addInfo(data, chapter) {
+  document.getElementById("info-chapter").innerHTML = `<p><strong>Capítulo: </strong>${chapter}</p>`;
+  document.getElementById("info-white-player").innerHTML = `<p><strong>Jugador Blanco: </strong>${data.whitePlayer}</p>`;
+  document.getElementById("info-black-player").innerHTML = `<p><strong>Jugador Negro: </strong>${data.blackPlayer}</p>`;
+  if (!equals(data.year, "")) {
+    document.getElementById("info-year").innerHTML = `<p><strong>Año: </strong>${data.year}</p>`;
+  } else {
+    document.getElementById("info-year").innerHTML = ``;
+  }
+  if (!equals(data.opening, "")) {
+    document.getElementById("info-opening-defense").innerHTML = `<p><strong>Apertura: </strong>${data.opening}</p>`;
+  } else {
+    document.getElementById("info-opening-defense").innerHTML = `<p><strong>Defensa: </strong>${data.defense}</p>`;
+  }
+}
 
 function getChessJSON(name) {
   initMap();
+
   var xhttp = new XMLHttpRequest();
   xhttp.open('GET', `/json/${name}.json`, true);
   xhttp.send();
@@ -57,47 +114,16 @@ function getChessJSON(name) {
     if (this.readyState == 4 && this.status == 200) {
       chess = JSON.parse(this.responseText);
 
-      var chaptersTrack = videoId.textTracks[1];
-      chaptersTrack.mode = "hidden"; // Oculta el track por defecto
-      chaptersTrack.addEventListener("cuechange", function () {
-        var cue = this.activeCues[0];
-        if (cue) {
-          for (let i = 0; i < chess.Chess.length; i++) {
-            let chapter = chess.Chess[i]["whitePlayer"] + " vs " + chess.Chess[i]["blackPlayer"];
-            if (equals(chapter, cue.text)) {
-              addMarker(i);
-              //Add info
-              addInfo(chapter, i);
-              break;
-            }
-          }
-        }
-      });
+
     }
   }
 }
 
-function addInfo(chapter, i) {
-  document.getElementById("info-chapter").innerHTML = `<p><strong>Capítulo: </strong>${chapter}</p>`;
-  document.getElementById("info-white-player").innerHTML = `<p><strong>Jugador Blanco: </strong>${chess.Chess[i]["whitePlayer"]}</p>`;
-  document.getElementById("info-black-player").innerHTML = `<p><strong>Jugador Negro: </strong>${chess.Chess[i]["blackPlayer"]}</p>`;
-  if (!equals(chess.Chess[i]["year"], "")) {
-    document.getElementById("info-year").innerHTML = `<p><strong>Año: </strong>${chess.Chess[i]["year"]}</p>`;
-  } else {
-    document.getElementById("info-year").innerHTML = ``;
-  }
-  if (!equals(chess.Chess[i]["opening"], "")) {
-    document.getElementById("info-opening-defense").innerHTML = `<p><strong>Apertura: </strong>${chess.Chess[i]["opening"]}</p>`;
-  } else {
-    document.getElementById("info-opening-defense").innerHTML = `<p><strong>Defensa: </strong>${chess.Chess[i]["defense"]}</p>`;
-  }
-}
-
-function addMarker(i) {
+function addMarker(latitude, longitude) {
   // Create an icon, an object holding the latitude and longitude, and a marker:
   var icon = new H.map.Icon(svgMarkup);
   //Getting coordinates
-  var coords = { lat: Number(chess.Chess[i]["geo"]["latitude"]), lng: Number(chess.Chess[i]["geo"]["longitude"]) };
+  var coords = { lat: Number(latitude), lng: Number(longitude) };
   if (coords.lat != 0 && coords.lng != 0) {
     var marker = new H.map.Marker(coords, { icon: icon });
 
