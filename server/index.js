@@ -3,6 +3,8 @@ const http = require('http');
 const socketio = require('socket.io');
 const fs = require('fs');
 
+//const { ExpressPeerServer } = require("peer");
+
 const app = express();
 const port = 80;
 
@@ -34,7 +36,7 @@ app.post('/', (req, res) => {
     //Escribimos en el JSON
     fs.writeFileSync('Visor-Semantico/json/quiz-chess_video.json', JSON.stringify(quiz), (err) => {
         //Error checking
-        if(err) throw err;
+        if (err) throw err;
         console.log("New quiz added");
     });
 
@@ -54,4 +56,19 @@ io.on('connection', (socket) => {
     });
 });
 
+//WebRTC
+// listen for requests
+/*
+const listener = app.listen(process.env.PORT, () => {
+    console.log("Your app is listening on port " + listener.address().port);
+});
+
+// peerjs server
+const peerServer = ExpressPeerServer(listener, {
+    debug: true,
+    path: '/gdie2305'
+});
+*/
+
 app.use(express.static('/home/gdie2305/Visor-Semantico/'));
+//app.use('/peerjs', peerServer);

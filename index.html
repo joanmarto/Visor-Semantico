@@ -24,9 +24,13 @@
     <link type="text/css" href="css/player.css" rel="stylesheet">
     <link type="text/css" href="css/quiz.css" rel="stylesheet">
     <link type="text/css" href="css/chat.css" rel="stylesheet">
+    <!--<link type="text/css" href="css/rtc.css" rel="stylesheet">-->
 
     <!--JavaScript Socket-->
     <script src="/socket.io/socket.io.js"></script>
+
+    <!--JavaScript WebRTC with peer.js-->
+    <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
 
     <!--JavaScript HLS-->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -39,6 +43,7 @@
     <script src="js/player.js" defer></script>
     <script src="js/map.js" defer></script>
     <script src="js/chat.js" defer></script>
+    <!--<script src="js/rtc.js" defer></script>-->
     
 
     <!-- Map API-->
@@ -179,6 +184,14 @@
 
             </div>
         </div>
+
+        <!--WebRTC-->
+        <!--
+        <div class="remote-video-container">
+            <video class="remote-video" autoplay></video>
+        </div>
+        -->
+
         <!--Chat-->
         <div class="chat-container">
             <div class="chat-content">
