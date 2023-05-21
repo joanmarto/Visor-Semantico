@@ -64,7 +64,6 @@
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-    
 }
 
 #seekBar::-webkit-slider-thumb {
@@ -87,6 +86,10 @@
     background: #121212;
     cursor: move;
     
+}
+
+progress{
+    width: 100%;
 }
 
 #video-seekbar {
@@ -142,6 +145,6 @@ button[id*="options-list-button-"]{
     }
 
     .video-timer-text{
-        font-size: smaller;
+        font-size: x-small;
     }
 }
