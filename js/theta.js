@@ -6,7 +6,7 @@ const optionalHlsOpts = null;
 const optionalThetaOpts = {
     allowRangeRequests: true, // false if cdn does not support range headers  
 };
-const player = window.player = videojs('video', {
+const player = window.player = videojs('video-div', {
     autoplay: false,
     muted: false,
     techOrder: ["theta_hlsjs", "html5"],

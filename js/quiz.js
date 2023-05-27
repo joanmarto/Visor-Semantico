@@ -1,9 +1,9 @@
 //Variables
-var videoQuiz = document.getElementById("video");
+var videoQuiz = document.getElementById("video-div_theta_hlsjs_api");
 var addquestion = document.getElementById("add-question-button");
 var select = document.getElementById("select_video");
 
-var videoSrc = videoQuiz.children[0].getAttribute("src");
+//var videoSrc = videoQuiz.children[0].getAttribute("src");
 //Obtenemos el nombre del video
 //var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
 var videoName = 'chess_video';

@@ -16,9 +16,10 @@
     background-color: black;
 }
 
-#video_theta_hlsjs_api {
+#video-div_theta_hlsjs_api {
     width: 100% !important; 
-    height: calc(100% - 35px) !important;
+    /*height: calc(100% - 35px) !important;*/
+    height: inherit !important;
 }
 
 #video{
@@ -26,7 +27,7 @@
     height: 100%;
 }
 
-.subtitles {
+.subtitles-div {
     display: none;
     height: 25px;
     position: relative;

@@ -1,10 +1,10 @@
-const videoId = document.getElementById("video");
+const videoId = document.getElementById("video-div_theta_hlsjs_api");
 const selectVideo = document.getElementById("select_video");
 
 var chess;
 var map;
 
-var videoSrc = videoId.children[0].getAttribute("src");
+//var videoSrc = videoId.children[0].getAttribute("src");
 //Obtenemos el nombre del video
 //var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
 var videoName = 'chess_video';
@@ -51,6 +51,7 @@ selectVideo.addEventListener('input', () => {
 });
 
 function initMetadata() {
+  console.log("adding event listener (map)");
   const metaTrack = document.getElementById('metadataTrack');
   metaTrack.mode = "hidden";
   

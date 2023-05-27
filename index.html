@@ -47,11 +47,11 @@
     <script src="http://cdn.dashjs.org/v4.4.0/dash.all.min.js"></script>
 
     <!--JavaScript-->
-    <script src="js/theta.js" defer></script>
     <script src="js/quiz.js" defer></script>
+    <script src="js/chat.js" defer></script>
     <script src="js/player.js" defer></script>
     <script src="js/map.js" defer></script>
-    <script src="js/chat.js" defer></script>
+    
     <!--<script src="js/rtc.js" defer></script>-->
 
     <!-- Map API-->
@@ -82,8 +82,8 @@
     <div class="main-grid-container">
         <!-- Video div -->
         <div class="video-container">
-            <div class="video">
-                <video id="video">
+            <div id = "video-div" class="video">
+                <video id="video_theta_hlsjs_api">
                     <!--Source-->
                     <source id="mp4" src="media/chess_video_1080.mp4" type="video/mp4">
                     <source id="webm" src="media/chess_video_1080.webm" type="video/webm">
@@ -95,7 +95,11 @@
                     <track id="chaptersTrack" kind="chapters" label="Chapters" src="/media/vtt/chess_video_chapters.vtt">
                     <track id="metadataTrack" kind="metadata" label="Metadata" src="/media/vtt/chess_video_meta.vtt">
                 </video>
-                <div class="subtitles">
+
+                <!--Theta script-->
+                <script src="js/theta.js"></script>
+
+                <div id="subtitles-div" class="subtitles-div">
                     <p id="subtitles-text">Subtitulos</p>
                 </div>
             </div>

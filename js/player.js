@@ -1,7 +1,7 @@
 //Variables and constants for video player elements
 const myCtrlVid = document.getElementById("myCtrlVid");
 //const video = document.getElementById("video");
-const video = document.getElementById("video_theta_hlsjs_api");
+const video = document.getElementById("video-div_theta_hlsjs_api");
 const playPauseBtn = document.getElementById("playPauseBtn");
 const duration = document.getElementById("duration");
 const seekbar = document.getElementById("seekBar");
@@ -58,18 +58,51 @@ function initStream() {
 
     chapt.setAttribute("id", "chaptersTrack");
     chapt.setAttribute("kind", "chapters");
-    chapt.setAttribute("label", "Chapters");
+    chapt.setAttribute("label", "chapters");
     chapt.setAttribute("src", `/media/vtt/${videoName}_chapters.vtt`);
 
     meta.setAttribute("id", "metadataTrack");
     meta.setAttribute("kind", "metadata");
-    meta.setAttribute("label", "Metadata");
+    meta.setAttribute("label", "metadata");
     meta.setAttribute("src", `/media/vtt/${videoName}_meta.vtt`);
 
     //Add elements
     video.appendChild(subs);
     video.appendChild(chapt);
     video.appendChild(meta);
+}
+
+function initTheta(){
+    //Create tracks for subtitles and chapters
+    let subs = document.createElement("track");
+    let chapt = document.createElement("track");
+    let meta = document.createElement("track");
+
+    //Add atributes
+    subs.setAttribute("id", "subtitlesTrack");
+    subs.setAttribute("label", "Español");
+    subs.setAttribute("kind", "subtitles");
+    subs.setAttribute("srclang", "esp");
+    subs.setAttribute("src", `/media/vtt/${videoName}_sub_esp.vtt`);
+
+    chapt.setAttribute("id", "chaptersTrack");
+    chapt.setAttribute("kind", "chapters");
+    chapt.setAttribute("label", "chapters");
+    chapt.setAttribute("src", `/media/vtt/${videoName}_chapters.vtt`);
+
+    meta.setAttribute("id", "metadataTrack");
+    meta.setAttribute("kind", "metadata");
+    meta.setAttribute("label", "metadata");
+    meta.setAttribute("src", `/media/vtt/${videoName}_meta.vtt`);
+
+    //Add elements
+    video.appendChild(subs);
+    video.appendChild(chapt);
+    video.appendChild(meta);
+    console.log("tracks added (player)");
+
+    //Add event listeners
+
 }
 
 function addCmafManifest() {
@@ -197,8 +230,8 @@ function videoTimer(time) {
 //Initialization
 video.addEventListener('play', init);
 
-//Add src video
-initStream();
+//Init Theta
+initTheta();
 
 //Seekbar
 video.addEventListener('timeupdate', () => {
@@ -256,24 +289,28 @@ volumeBtn.addEventListener('dblclick', () => {
 })
 
 //Subtitles
+console.log("subtitles track");
 const subsTrack = document.getElementById('subtitlesTrack');
 subsTrack.mode = "hidden"; // Oculta el track por defecto
-subsTrack.addEventListener("cuechange", function () {
+subsTrack.addEventListener('cuechange', function () {
+    console.log(cue.text);
     var cue = this.activeCues[0];
     if (cue) {
         document.getElementById("subtitles-text").innerHTML = cue.text;
     }
 });
+console.log(subsTrack);
+
 
 subtitlesButton.addEventListener('click', () => {
-    let subt = document.getElementsByClassName("subtitles")[0];
+    /*let subt = document.getElementById('subtitles-div');
     if (showSubtitles) {
         showSubtitles = false;
         subt.style.display = "block";
     } else {
         showSubtitles = true;
         subt.style.display = "none";
-    }
+    }*/
 });
 
 //Opciones 
@@ -444,6 +481,7 @@ function changeStreamingProtocol(protocol) {
 //Chapters
 const chaptersTrack = document.getElementById('chaptersTrack');
 chaptersTrack.mode = "hidden"; // Oculta el track por defecto
+console.log(chaptersTrack);
 function chapters(optionsList) {
     //Add chapters selector
     if (showChapters) {
