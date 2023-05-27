@@ -6,7 +6,8 @@ var map;
 
 var videoSrc = videoId.children[0].getAttribute("src");
 //Obtenemos el nombre del video
-var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+//var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+var videoName = 'chess_video';
 
 // Initialize the platform object
 var platform = new H.service.Platform({
@@ -50,7 +51,7 @@ selectVideo.addEventListener('input', () => {
 });
 
 function initMetadata() {
-  var metaTrack = videoId.textTracks[2];
+  const metaTrack = document.getElementById('metadataTrack');
   metaTrack.mode = "hidden";
   
   //Show metadata

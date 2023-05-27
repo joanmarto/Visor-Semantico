@@ -18,7 +18,7 @@
     color:red;
     text-decoration: none;
     padding: 2px;
-    
+    border: 2px #3e4144 solid;
 }
 
 #GoLiveBtn:hover{

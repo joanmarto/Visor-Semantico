@@ -1,6 +1,7 @@
 //Variables and constants for video player elements
 const myCtrlVid = document.getElementById("myCtrlVid");
-const video = document.getElementById("video");
+//const video = document.getElementById("video");
+const video = document.getElementById("video_theta_hlsjs_api");
 const playPauseBtn = document.getElementById("playPauseBtn");
 const duration = document.getElementById("duration");
 const seekbar = document.getElementById("seekBar");
@@ -16,9 +17,10 @@ var showVolumeSeekbar = true;
 var showSubtitles = true;
 var showChapters = true;
 var showStreamingSelector = true;
-var videoSrc = video.children[0].getAttribute("src");
+//var videoSrc = video.children[0].getAttribute("src");
 //Obtenemos el nombre del video
-var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+//var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+var videoName = 'chess_video';
 
 //Init
 function init() {
@@ -254,7 +256,7 @@ volumeBtn.addEventListener('dblclick', () => {
 })
 
 //Subtitles
-var subsTrack = video.textTracks[0];
+const subsTrack = document.getElementById('subtitlesTrack');
 subsTrack.mode = "hidden"; // Oculta el track por defecto
 subsTrack.addEventListener("cuechange", function () {
     var cue = this.activeCues[0];
@@ -440,7 +442,7 @@ function changeStreamingProtocol(protocol) {
 }
 
 //Chapters
-var chaptersTrack = video.textTracks[1];
+const chaptersTrack = document.getElementById('chaptersTrack');
 chaptersTrack.mode = "hidden"; // Oculta el track por defecto
 function chapters(optionsList) {
     //Add chapters selector

@@ -11,9 +11,14 @@
 }
 
 .video {
-    width: 100%;
+    width: 100%; 
     height: calc(100% - 35px);
     background-color: black;
+}
+
+#video_theta_hlsjs_api {
+    width: 100% !important; 
+    height: calc(100% - 35px) !important;
 }
 
 #video{

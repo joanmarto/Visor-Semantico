@@ -5,7 +5,8 @@ var select = document.getElementById("select_video");
 
 var videoSrc = videoQuiz.children[0].getAttribute("src");
 //Obtenemos el nombre del video
-var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+//var videoName = videoSrc.substring(videoSrc.lastIndexOf('/') + 1, videoSrc.lastIndexOf('_'));
+var videoName = 'chess_video';
 
 var quiz;
 var score = [];
