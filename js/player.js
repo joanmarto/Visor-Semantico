@@ -155,25 +155,29 @@ function controlKeyEvents() {
 }
 controlKeyEvents();
 
+//Other functions
+function setCurrentTime(time) {
+    video.currentTime = time;
+}
+
+function getCurrentTime() {
+    return video.currentTime;
+}
+
 document.addEventListener('keydown', (ev) => {
-    if (usingKeyEvents) {
-        //console.log(ev.key); 
-        switch (ev.key) {
-            case ' ':
-                playpause();
-                break;
-            case 'ArrowRight':
-                video.currentTime += 5;
-                break;
-            case 'ArrowLeft':
-                video.currentTime -= 5;
-                break;
-            case '0':
-                video.currentTime = 0;
-            default:
-        }
+    const EVENT_KEY_MAP = {
+        ' ': () => playpause(),
+        'ArrowRight': () => setCurrentTime(getCurrentTime() + 5),
+        'ArrowLeft': () => setCurrentTime(getCurrentTime() - 5),
+        '0': () => setCurrentTime(0)
     }
-})
+
+    try {
+        if (usingKeyEvents) EVENT_KEY_MAP[ev.key]();
+    } catch (err) {
+        //console.log(ev.key + " : No action");
+    }
+});
 
 
 //Add the duration
@@ -284,13 +288,13 @@ videoOptions.addEventListener('click', () => {
 
 function addOpcionsEventListener() {
     //Botones para cada una de las opciones
-    const options = [{option: "1080p", value: 1},
-                    {option: "720p", value: 2},
-                    {option: "480p", value: 3},
-                    {option: "360p", value: 4},
-                    {option: "Vel. +0.25", value: 5},
-                    {option: "Vel. -0.25", value: 6},
-                    {option: "Capítulos", value: 7}];
+    const options = [{ option: "1080p", value: 1 },
+    { option: "720p", value: 2 },
+    { option: "480p", value: 3 },
+    { option: "360p", value: 4 },
+    { option: "Vel. +0.25", value: 5 },
+    { option: "Vel. -0.25", value: 6 },
+    { option: "Capítulos", value: 7 }];
     var b = [];
     for (let i = 0; i < options.length; i++) {
         let mytime = 0;
