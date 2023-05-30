@@ -72,7 +72,14 @@ function initStream() {
     video.appendChild(meta);
 }
 
-function initTheta(){
+function initTheta() {
+    const videoParent = video.parentElement;
+    //console.log(divAsqueroso.children);
+    for(let i = 1; i < videoParent.childElementCount; i++){
+        videoParent.children[i].remove();
+    }
+    videoParent.setAttribute('class', 'video');
+
     //Create tracks for subtitles and chapters
     let subs = document.createElement("track");
     let chapt = document.createElement("track");
@@ -289,27 +296,29 @@ volumeBtn.addEventListener('dblclick', () => {
 })
 
 //Subtitles
-console.log("subtitles track");
 const subsTrack = document.getElementById('subtitlesTrack');
-subsTrack.mode = "hidden"; // Oculta el track por defecto
+subsTrack.track.mode = "hidden"; // Oculta el track por defecto
 subsTrack.addEventListener('cuechange', function () {
-    let cue = subsTrack.track.activeCues[0].text;
+    let cue = subsTrack.track.activeCues[0];
     console.log(cue.text);
     if (cue) {
         document.getElementById("subtitles-text").innerHTML = cue.text;
     }
 });
-console.log(subsTrack);
+console.log("subtitles track");
+console.log(subsTrack.track);
 
 
 subtitlesButton.addEventListener('click', () => {
-    let subt = document.getElementById('subtitles-div');
+    const subt = document.getElementById('subtitles-div');
     if (showSubtitles) {
         showSubtitles = false;
-        subt.style.display = "block";
+        //subt.style.display = "block";
+        console.log(subt);
     } else {
         showSubtitles = true;
-        subt.style.display = "none";
+        //subt.style.display = "none";
+        console.log(subt);
     }
 });
 
@@ -317,11 +326,13 @@ subtitlesButton.addEventListener('click', () => {
 videoOptions.addEventListener('click', () => {
     if (showVideoOptions) {
         showVideoOptions = false;
-        optionsList.style.display = 'grid';
+        console.log(optionsList);
+        //optionsList.style.display = 'grid';
     } else {
         showVideoOptions = true;
         //showChapters = false;
-        optionsList.style.display = 'none';
+        //optionsList.style.display = 'none';
+        console.log(optionsList);
     }
 })
 
