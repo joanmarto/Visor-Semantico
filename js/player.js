@@ -293,8 +293,8 @@ console.log("subtitles track");
 const subsTrack = document.getElementById('subtitlesTrack');
 subsTrack.mode = "hidden"; // Oculta el track por defecto
 subsTrack.addEventListener('cuechange', function () {
+    let cue = subsTrack.track.activeCues[0].text;
     console.log(cue.text);
-    var cue = this.activeCues[0];
     if (cue) {
         document.getElementById("subtitles-text").innerHTML = cue.text;
     }
@@ -303,14 +303,14 @@ console.log(subsTrack);
 
 
 subtitlesButton.addEventListener('click', () => {
-    /*let subt = document.getElementById('subtitles-div');
+    let subt = document.getElementById('subtitles-div');
     if (showSubtitles) {
         showSubtitles = false;
         subt.style.display = "block";
     } else {
         showSubtitles = true;
         subt.style.display = "none";
-    }*/
+    }
 });
 
 //Opciones 
