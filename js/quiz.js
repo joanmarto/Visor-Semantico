@@ -19,7 +19,6 @@ select.addEventListener('input', () => {
 });
 
 function getQuizJSON(name) {
-    console.log(name);
     var xhttp = new XMLHttpRequest();
     xhttp.open('GET', `/json/quiz-${name}.json`, true);
     xhttp.send();

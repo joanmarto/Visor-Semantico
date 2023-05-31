@@ -4,7 +4,7 @@ const STATIC_URL = "https://media.thetavideoapi.com/video_jwjjeh2pkby43ntb09idcb
 //Theta player
 const optionalHlsOpts = null;
 const optionalThetaOpts = {
-    allowRangeRequests: true, // false if cdn does not support range headers  
+    allowRangeRequests: false, // false if cdn does not support range headers  
 };
 const player = window.player = videojs('video-div', {
     autoplay: false,

@@ -14,7 +14,7 @@ const subtitlesButton = document.getElementById("subtitles-button");
 var usingKeyEvents = false;
 var showVideoOptions = true;
 var showVolumeSeekbar = true;
-var showSubtitles = true;
+var showSubtitles = false;
 var showChapters = true;
 var showStreamingSelector = true;
 //var videoSrc = video.children[0].getAttribute("src");
@@ -74,7 +74,6 @@ function initStream() {
 
 function initTheta() {
     const videoParent = video.parentElement;
-    //console.log(divAsqueroso.children);
     for(let i = 1; i < videoParent.childElementCount; i++){
         videoParent.children[i].remove();
     }
@@ -106,10 +105,6 @@ function initTheta() {
     video.appendChild(subs);
     video.appendChild(chapt);
     video.appendChild(meta);
-    console.log("tracks added (player)");
-
-    //Add event listeners
-
 }
 
 function addCmafManifest() {
@@ -275,7 +270,7 @@ volumeBtn.addEventListener('click', () => {
         showVolumeSeekbar = false;
         //Add volume seekbar input
         document.getElementById("seekVol-container").innerHTML = `<input type=\"range\" id=\"seekVol\" min=\"0\" value=\"${video.volume}\" max=\"1\" step=\"0.1\" ></input>`;
-        myCtrlVid.style.gridTemplateColumns = "5% 15% 50% 25% 5%";
+        myCtrlVid.style.gridTemplateColumns = "5% 15% 45% 25% 5% 5%";
         //Volume control
         var vol = document.getElementById("seekVol");
         vol.addEventListener('input', getVolume, false);
@@ -292,47 +287,38 @@ volumeBtn.addEventListener('dblclick', () => {
     var vol = document.getElementById("seekVol");
     vol.style.visibility = "hidden";
     vol.remove();
-    myCtrlVid.style.gridTemplateColumns = "5% 20% 65% 5% 5%";
+    myCtrlVid.style.gridTemplateColumns = "5% 15% 65% 5% 5% 5%";
 })
 
 //Subtitles
-const subsTrack = document.getElementById('subtitlesTrack');
-subsTrack.track.mode = "hidden"; // Oculta el track por defecto
-subsTrack.addEventListener('cuechange', function () {
+function getSubtitles(subsTrack){
     let cue = subsTrack.track.activeCues[0];
-    console.log(cue.text);
-    if (cue) {
-        document.getElementById("subtitles-text").innerHTML = cue.text;
+    if (cue && showSubtitles) {
+        //document.getElementById("subtitles-text").innerHTML = cue.text;
     }
-});
-console.log("subtitles track");
-console.log(subsTrack.track);
-
+}
 
 subtitlesButton.addEventListener('click', () => {
-    const subt = document.getElementById('subtitles-div');
-    if (showSubtitles) {
-        showSubtitles = false;
-        //subt.style.display = "block";
-        console.log(subt);
-    } else {
-        showSubtitles = true;
-        //subt.style.display = "none";
-        console.log(subt);
-    }
+    const subsTrack = document.getElementById('subtitlesTrack');
+    subsTrack.track.mode = "hidden"; // Oculta el track por defecto
+   
+   if(!showSubtitles){
+    subsTrack.removeEventListener('cuechange', getSubtitles(subsTrack));
+   }else{
+    subsTrack.addEventListener('cuechange', getSubtitles(subsTrack));
+   }
+   showSubtitles = !showSubtitles;
 });
 
 //Opciones 
 videoOptions.addEventListener('click', () => {
     if (showVideoOptions) {
         showVideoOptions = false;
-        console.log(optionsList);
-        //optionsList.style.display = 'grid';
+        optionsList.style.display = 'grid';
     } else {
         showVideoOptions = true;
         //showChapters = false;
-        //optionsList.style.display = 'none';
-        console.log(optionsList);
+        optionsList.style.display = 'none';
     }
 })
 
@@ -491,8 +477,7 @@ function changeStreamingProtocol(protocol) {
 
 //Chapters
 const chaptersTrack = document.getElementById('chaptersTrack');
-chaptersTrack.mode = "hidden"; // Oculta el track por defecto
-console.log(chaptersTrack);
+chaptersTrack.track.mode = "hidden"; // Oculta el track por defecto
 function chapters(optionsList) {
     //Add chapters selector
     if (showChapters) {
@@ -507,8 +492,8 @@ function chapters(optionsList) {
         optionsList.appendChild(form);
         form.appendChild(selector);
         selector.innerHTML = `<option>Selecciona un capítulo</option>`;
-        for (let i = 0; i < chaptersTrack.cues.length; i++) {
-            selector.innerHTML += `<option value=${i}>${chaptersTrack.cues[i].text}</option>`;
+        for (let i = 0; i < chaptersTrack.track.cues.length; i++) {
+            selector.innerHTML += `<option value=${i}>${chaptersTrack.track.cues[i].text}</option>`;
         }
 
     } else {
@@ -518,7 +503,7 @@ function chapters(optionsList) {
 }
 
 function changeChapter(i) {
-    video.currentTime = chaptersTrack.cues[i].startTime;
+    video.currentTime = chaptersTrack.track.cues[i].startTime;
 }
 
 function changeQuality(quality, mytime) {

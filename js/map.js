@@ -51,13 +51,12 @@ selectVideo.addEventListener('input', () => {
 });
 
 function initMetadata() {
-  console.log("adding event listener (map)");
   const metaTrack = document.getElementById('metadataTrack');
-  metaTrack.mode = "hidden";
+  metaTrack.track.mode = "hidden";
   
   //Show metadata
   metaTrack.addEventListener('cuechange', function () {
-    var cue = this.activeCues[0];
+    var cue = metaTrack.track.activeCues[0];
     if (cue) {
       let data = JSON.parse(cue.text);
       let chapter = `${data.whitePlayer} vs ${data.blackPlayer}`;
