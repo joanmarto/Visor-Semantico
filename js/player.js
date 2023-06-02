@@ -237,7 +237,7 @@ initTheta();
 
 //Seekbar
 video.addEventListener('timeupdate', () => {
-    let currentTime = video.currentTime;
+    let currentTime = getCurrentTime();
     //Update seekbar
     seekbar.setAttribute("value", currentTime);
 
@@ -261,7 +261,7 @@ function getInput(e) {
     var pct = x / barwidth;
     // now position playback
     var newPos = Math.round(video.duration * pct);
-    video.currentTime = newPos;
+    setCurrentTime(newPos);
 }
 
 //Show seekbar volume onclick
@@ -503,7 +503,7 @@ function chapters(optionsList) {
 }
 
 function changeChapter(i) {
-    video.currentTime = chaptersTrack.track.cues[i].startTime;
+    setCurrentTime(chaptersTrack.track.cues[i].startTime);
 }
 
 function changeQuality(quality, mytime) {
@@ -518,9 +518,9 @@ function changeQuality(quality, mytime) {
     }
 
     //Actualizamos
-    mytime = video.currentTime;
+    mytime = getCurrentTime();
     myload();
-    video.currentTime = mytime;
+    setCurrentTime(mytime);
 }
 
 function myload() {
